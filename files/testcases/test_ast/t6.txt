@@ -1,0 +1,17 @@
+declare module mod1;
+<<<driver program>>>
+start
+  print(1);
+  get_value(d);
+  switch(c)
+      start
+        case true:
+                   print(100);
+                   print(200);
+                   break;
+        case false: get_value(x);
+                   break;
+        default: get_value(y);
+                 break;
+      end
+end

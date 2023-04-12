@@ -1,0 +1,6 @@
+** test assignment statement left value array complex ast **
+declare module mod1;
+<<<driver program>>>
+start
+     a[-2] := 1 + true + 3/4 - false - 4*c;
+end

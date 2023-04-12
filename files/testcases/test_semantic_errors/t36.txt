@@ -1,0 +1,23 @@
+declare module mod1;
+<<<driver program>>>
+start
+    for (counter in -2..3)
+    start
+        declare i: integer;
+        declare j: real;
+        for(cnt in 2..9)
+        start
+           declare x:real;
+        end
+        for(cnt in 2..9)
+        start
+           declare x:boolean;
+        end
+    end
+
+    for (counter in -2..3)
+        start
+            declare i: integer;
+        end
+
+end

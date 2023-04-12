@@ -1,0 +1,50 @@
+49
+0 : is_alpha=1,is_underscore=1,is_digit=3,is_less_than=12,is_greater_than=18,is_star=24,is_colon=29,is_equal=32,is_exclamation=34,is_dot=36,is_plus=38,is_minus=39,is_forward_slash=40,is_semicolon=41,is_comma=42,is_sq_bracket_open=43,is_sq_bracket_close=44,is_bracket_open=45,is_bracket_close=46,is_new_line=47,is_space=47,is_tab=47
+1 : is_alpha=1,is_digit=1,is_underscore=1
+2 :
+3 : is_digit=3,is_dot=5
+4 :
+5 : is_digit=6,is_dot=8
+6 : is_digit=6,is_eE=9
+7 :
+8 :
+9 : is_plus=10,is_minus=10,is_digit=11
+10 : is_digit=11
+11 : is_digit=11
+12 : is_less_than=13,is_equal=16
+13 : is_less_than=14
+14 :
+15 :
+16 :
+17 :
+18 : is_greater_than=19,is_equal=22
+19 : is_greater_than=21
+20 :
+21 :
+22 :
+23 :
+24 : is_star=25
+25 : is_star=26
+26 : is_star=27,is_dollar=48
+27 :
+28 :
+29 : is_equal=30
+30 :
+31 :
+32 : is_equal=33
+33 :
+34 : is_equal=35
+35 :
+36 : is_dot=37
+37 :
+38 :
+39 :
+40 :
+41 :
+42 :
+43 :
+44 :
+45 :
+46 :
+47 :
+48 :

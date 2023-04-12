@@ -1,0 +1,12 @@
+<<<driver program>>>
+start
+    print(2);
+    print(3.2);
+    get_value(v);
+    get_value(a);
+    print(true);
+    print(x);
+    print(a[x]);
+    print(a[7]);
+    print(b[-y]);
+end

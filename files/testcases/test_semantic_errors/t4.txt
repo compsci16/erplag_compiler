@@ -1,0 +1,23 @@
+** function overloading + multiple declaration **
+** simple redeclaration - different type **
+<<<driver program>>>
+start
+    declare a,b,a:integer;
+    declare a,b,c:integer;
+    declare c: real;
+    declare b: boolean;
+end
+
+<<module mod1>>
+takes input [i: real, j: integer];
+start
+    declare a: integer;
+    declare a: real;
+end
+
+<<module mod1>>
+takes input [x: real, p: boolean];
+start
+     declare a: integer;
+     declare a: real;
+end

@@ -1,0 +1,24 @@
+** Testing the presence of default statement **
+
+<<<driver program>>>
+start
+   declare a:integer;
+   declare b:real;
+   declare c:boolean;
+   switch(a)                          ** Integer :- No Error **
+   start
+      case 23: print(7);
+               break;
+   end                               ** Error :- There should be a default statement here **
+
+   switch(c)                          ** Boolean :- No Error **
+   start
+      case true: print(8);
+                 break;
+      case false: print(8);
+                  break;
+      default: print(8);         ** Error :- There should not be a default statement here **
+                 break;
+   end
+
+end

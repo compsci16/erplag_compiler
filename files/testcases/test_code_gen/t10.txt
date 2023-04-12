@@ -1,0 +1,11 @@
+** get_val + print **
+** print int **
+declare module mod1;
+<<<driver program>>>
+start
+    declare a: integer;
+    declare b: integer;
+    declare x: integer;
+    x := 2000 - 1000 + 3000;
+    print(x);
+end

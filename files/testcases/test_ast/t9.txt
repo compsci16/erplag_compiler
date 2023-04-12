@@ -1,0 +1,13 @@
+declare module mod1;
+<<<driver program>>>
+start
+    print(2);
+end
+
+<<module mod1>>
+takes input [a: integer];
+returns [x: integer];
+start
+    print(3);
+    get_value(a);
+end

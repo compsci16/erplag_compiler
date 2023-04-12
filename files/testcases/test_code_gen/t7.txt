@@ -1,0 +1,12 @@
+** get_val + print **
+** print int **
+declare module mod1;
+<<<driver program>>>
+start
+    declare a: integer;
+    declare b: integer;
+    get_value(a);
+    get_value(b);
+    a := a + b + a;
+    print(a);
+end

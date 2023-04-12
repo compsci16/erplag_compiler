@@ -1,0 +1,17 @@
+** Testing errors given by PLUS, MUL and MINUS operator  MEDIUM**
+
+<<<driver program>>>
+start
+    declare a,b,x:integer;
+    declare c,d,y:real;
+    declare e,f,z:boolean;
+     ** x := 2 + 3.5; **
+    x := a*b;
+    x := a + b + (a*b - 34);             ** No error **
+    y := c*d-9.8;                        ** No error **
+    x := a + a*b - c*6.7;                ** Error :- Diff types for MINUS node**
+    x := a + 5.4;                        ** Error :- Diff types for PLUS node**
+    x := b + d;                          ** Error :- Diff types for PLUS node**
+    z := e * true;                       ** Error :- MUL cannot have boolean ast node**
+    z := 1* true;                       ** Error :- MUL cannot have boolean ast node**
+end

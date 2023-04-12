@@ -1,0 +1,19 @@
+**Code Generation test case 4: Computing expressions using integer, boolean and static array data types**
+
+**Single driver module with two levels of nesting
+Variant of test case 3**
+
+<<<driver program>>>
+start
+	declare x, y, z, k:integer;
+	declare a, b, c:integer;
+	declare u, v: boolean;
+    declare A: array[10..15] of integer;
+	u:= true;
+	a:= 5;
+	b:= 9;
+	get_value(x);
+	get_value(y);
+	z:= x + y*b +(a-b)*y+ a*2 - b*x;
+	print(z);
+end

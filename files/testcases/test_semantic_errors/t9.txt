@@ -1,0 +1,17 @@
+**multiple declarations with array variable as original in 1 module and duplicate in other**
+declare module mod1;
+<<<driver program>>>
+start
+    for (counter in -2..3)
+    start
+        declare i: array[4..20] of integer;
+        declare i: integer;
+    end
+end
+
+<<module mod1>>
+takes input [k: boolean];
+start
+      declare i: integer;
+      declare i: array[4..20] of integer;
+end

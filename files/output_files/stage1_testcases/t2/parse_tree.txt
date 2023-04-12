@@ -1,0 +1,36 @@
+Lexeme                    Line #     Token Type      Value (If Number)    Parent Node     Is Leaf    Node Symbol
+------                                                                    Pro             Yes        Mds       
+------                                                                    Root            No         Pro       
+------                                                                    Pro             Yes        Oms       
+<<<                       2          DRIVERDEF                            Dm              Yes        DRIVERDEF 
+------                                                                    Pro             No         Dm        
+driver                    2          DRIVER                               Dm              Yes        DRIVER    
+program                   2          PROGRAM                              Dm              Yes        PROGRAM   
+>>>                       2          DRIVERENDDEF                         Dm              Yes        DRIVERENDDEF
+start                     3          START                                Mdef            Yes        START     
+------                                                                    Dm              No         Mdef      
+------                                                                    Mdef            Yes        statements
+end                       5          END                                  Mdef            Yes        END       
+<<                        6          DEF                                  Mod             Yes        DEF       
+------                                                                    Oms             No         Mod       
+module                    6          MODULE                               Mod             Yes        MODULE    
+empty                     6          ID                                   Mod             Yes        ID        
+>>                        6          ENDDEF                               Mod             Yes        ENDDEF    
+takes                     7          TAKES                                Mod             Yes        TAKES     
+input                     7          INPUT                                Mod             Yes        INPUT     
+[                         7          SQBO                                 Mod             Yes        SQBO      
+a                         7          ID                                   Ipl             Yes        ID        
+------                                                                    Mod             No         Ipl       
+:                         7          COLON                                Ipl             Yes        COLON     
+boolean                   7          BOOLEAN                              Dt              Yes        BOOLEAN   
+------                                                                    Ipl             No         Dt        
+------                                                                    Ipl             Yes        Zipl      
+]                         7          SQBC                                 Mod             Yes        SQBC      
+;                         7          SEMICOLON                              Mod             Yes        SEMICOLON
+------                                                                    Mod             Yes        returnList
+start                     8          START                                Mdef            Yes        START     
+------                                                                    Mod             No         Mdef      
+------                                                                    Mdef            Yes        statements
+end                       10         END                                  Mdef            Yes        END       
+------                                                                    Pro             No         Oms       
+------                                                                    Oms             Yes        Oms       

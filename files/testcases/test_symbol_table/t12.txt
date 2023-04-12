@@ -1,0 +1,25 @@
+** nested for **
+declare module mod1;
+<<<driver program>>>
+start
+end
+<<module mod1>> takes input [LIST:array[4..20] of real];
+                returns [C:boolean];
+start
+    declare d:integer;
+    for(k in -2..3)
+    start
+         declare p,q,e: real;
+         declare X1,X2: array[1..-e] of integer;
+         for(NESTED_COUNTER in -2..3)
+         start
+            declare NESTED:integer;
+         end
+    end
+end
+
+<<module mod2>> takes input [I: real, J: integer,LIST:array[4..20] of real];
+                returns [A: integer, B: real, C:boolean];
+start
+    declare X1,X2,X3: array[1..-e] of real;
+end

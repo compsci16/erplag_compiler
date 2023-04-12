@@ -1,0 +1,14 @@
+** get_val + print **
+** print int **
+<<<driver program>>>
+start
+    declare a: integer;
+    declare b: integer;
+    declare c: boolean;
+    get_value(a);
+    get_value(b);
+    get_value(c);
+    print(a);
+    print(b);
+    print(c);
+end

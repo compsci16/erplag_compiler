@@ -1,0 +1,29 @@
+** while with nesting **
+declare module mod1;
+<<<driver program>>>
+start
+end
+<<module mod1>> takes input [LIST:array[4..20] of real];
+                returns [C:boolean];
+start
+    declare d:integer;
+    while (i <= k)
+    start
+        declare D1, D2: boolean;
+        for (k in 1..10)
+            start
+                declare X1: array[2..3] of integer;
+                while (j <= p)
+                start
+                    declare a:boolean;
+                end
+            end
+    end
+
+end
+
+<<module mod2>> takes input [I: real, J: integer,LIST:array[4..20] of real];
+                returns [A: integer, B: real, C:boolean];
+start
+    declare X1,X2,X3: array[1..-e] of real;
+end

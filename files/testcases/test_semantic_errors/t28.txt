@@ -1,0 +1,23 @@
+**
+    Valid function call with declaration: In this test case,
+    we define a function foo that takes two parameters x and y.
+    We then define another function bar that calls foo before its definition,
+    but we also provide a declaration for foo.
+    Since the declaration is present, the code should compile without errors.
+**
+declare module foo;
+<<<driver program>>>
+start
+end
+
+<<module bar>>
+takes input [x: integer, y: real];
+start
+  use module foo with parameters x, y;
+end
+
+<<module foo>>
+takes input [x: integer, y: real];
+returns [z: boolean];
+start
+end

@@ -1,0 +1,10 @@
+** get_val + print **
+** print int **
+declare module mod1;
+<<<driver program>>>
+start
+    declare a: integer;
+    get_value(a);
+    a := a + 1;
+    print(a);
+end

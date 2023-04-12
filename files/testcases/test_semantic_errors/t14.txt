@@ -1,0 +1,41 @@
+** module called with structurally equivalent array **
+declare module mod1;
+declare module mod2;
+<<<driver program>>>
+start
+    declare list1: array[1..20] of integer;
+    declare list2: array[1..20] of integer;
+    declare list3: array[1..20] of real;
+    declare list4: array[-1..20] of integer;
+    declare list5: array[1..-20] of integer;
+    declare list6: array[-1..-20] of integer;
+    use module mod1 with parameters list1; ** alright **
+    use module mod1 with parameters list2; ** alright **
+    ** wrong ones: **
+    use module mod1 with parameters list3;
+    use module mod1 with parameters list4;
+    use module mod1 with parameters list5;
+
+
+    use module mod2 with parameters list6; **wrong**
+    use module mod2 with parameters list6,b; ** wrong**
+    declare b: boolean;
+    use module mod2 with parameters list6,b; **right**
+    declare c: real;
+    use module mod2 with parameters list6,c; **right**
+end
+
+
+<<module mod1>>
+takes input [K: array[1..20] of integer];
+start
+
+end
+
+
+<<module mod2>>
+takes input [K: array[-1..-20] of integer, B: boolean];
+start
+
+end
+

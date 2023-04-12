@@ -1,0 +1,16 @@
+** empty returns but assignop still present **
+declare module mod1;
+<<<driver program>>>
+start
+    declare a: integer;
+    declare p: array[-5..-10] of integer;
+    [a,p] := use module mod1 with parameters a,p;
+end
+
+
+<<module mod1>>
+takes input [K: integer, list: array[-5..-10] of integer];
+start
+end
+
+

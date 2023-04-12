@@ -1,0 +1,12 @@
+** get_val + print **
+** print int **
+<<<driver program>>>
+start
+    declare a: integer;
+    declare b: integer;
+    get_value(a);
+    get_value(b);
+    print(1);
+    print(20);
+    print(3000);
+end

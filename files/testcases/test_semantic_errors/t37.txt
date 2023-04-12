@@ -1,0 +1,17 @@
+declare module mod1;
+
+<<<driver program>>>
+start
+   declare i: array[4..20] of integer;
+   declare a: array[x..y] of real;
+   declare b: array[3..8] of boolean;
+   declare z:integer;
+end
+
+
+<<module mod1>>
+takes input [K: array[1..20] of integer];
+start
+  declare arr: array[-9..-1] of integer;
+  declare p:real;
+end

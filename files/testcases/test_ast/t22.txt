@@ -1,0 +1,49 @@
+declare module mod1;
+
+<<module mod1>>
+takes input [n: integer, list:array[1..n] of integer];
+returns [res: boolean];
+start
+     res := false;
+     declare x:integer;
+     x := n;
+     while(x>0)
+     start
+        declare y:integer;
+        y := x-1;
+        while(y>0)
+        start
+           declare z:integer;
+           z := y-1;
+           while(z>0)
+           start
+              declare flag:boolean;
+              flag := (list[x]+list[y]+list[z] == 0);
+              switch(flag)
+              start
+                 case true:
+                           res := true;
+                           break;
+              end
+              z := z-1;
+           end
+           y := y-1;
+        end
+        x := x-1;
+     end
+end
+
+<<<driver program>>>
+start
+   declare n,x:integer;
+   get_value(n);
+   declare arr:array [1..10] of integer;
+   x := 1;
+   while(x <= n)
+   start
+      declare element:integer;
+      get_value(element);
+      arr[x] := element;
+   end
+   use module mod1 with parameters n,arr;
+end

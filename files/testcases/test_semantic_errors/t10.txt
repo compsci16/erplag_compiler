@@ -1,0 +1,17 @@
+**same array type but redclared**
+declare module mod1;
+<<<driver program>>>
+start
+    declare i: array[4..20] of integer;
+    declare i: array[4..20] of integer;
+    declare i: array[4..20] of boolean;
+    declare i: real;
+
+    for (counter in -2..3)
+    start
+        declare i: array[4..20] of integer;
+        declare i: array[4..20] of integer;
+        declare i: array[4..20] of boolean;
+        declare i: real;
+    end
+end

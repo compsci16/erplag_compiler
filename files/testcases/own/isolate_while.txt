@@ -1,0 +1,7 @@
+<<<driver program>>>
+start
+    while(low <= high                       **ERROR 3**
+    start
+        declare mid: integer;
+    end
+end

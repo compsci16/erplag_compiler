@@ -1,0 +1,9 @@
+8
+E = T,E1
+E1 = PLUS,T,E1
+E1 = EPSILON
+T = F,T1
+T1 = MUL,F,T1
+T1 = EPSILON
+F = ID
+F = BO,E,BC

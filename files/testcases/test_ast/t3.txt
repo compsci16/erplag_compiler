@@ -1,0 +1,7 @@
+<<<driver program>>>
+start
+get_value(a);
+get_value(b);
+get_value(c);
+get_value(a);
+end

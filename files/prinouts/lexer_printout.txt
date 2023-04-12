@@ -1,0 +1,555 @@
+Lexer's DFA:
+Number of states = 49
+--------------------------------------------------
+State ID = 0
+is_accept = false
+retract_by = 0
+# edges = 22
+Associated Token: INVALID
+Edges:
+on others to 48
+on is_alpha to 1,
+on is_underscore to 1,
+on is_digit to 3,
+on is_less_than to 12,
+on is_greater_than to 18,
+on is_star to 24,
+on is_colon to 29,
+on is_equal to 32,
+on is_exclamation to 34,
+on is_dot to 36,
+on is_plus to 38,
+on is_minus to 39,
+on is_forward_slash to 40,
+on is_semicolon to 41,
+on is_comma to 42,
+on is_sq_bracket_open to 43,
+on is_sq_bracket_close to 44,
+on is_bracket_open to 45,
+on is_bracket_close to 46,
+on is_new_line to 47,
+on is_space to 47,
+on is_tab to 47,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 1
+is_accept = false
+retract_by = 0
+# edges = 3
+Associated Token: INVALID
+Edges:
+on others to 2
+on is_alpha to 1,
+on is_digit to 1,
+on is_underscore to 1,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 2
+is_accept = true
+retract_by = 1
+# edges = 0
+Associated Token: ID
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 3
+is_accept = false
+retract_by = 0
+# edges = 2
+Associated Token: INVALID
+Edges:
+on others to 4
+on is_digit to 3,
+on is_dot to 5,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 4
+is_accept = true
+retract_by = 1
+# edges = 0
+Associated Token: NUM
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 5
+is_accept = false
+retract_by = 0
+# edges = 2
+Associated Token: INVALID
+Edges:
+on others to 48
+on is_digit to 6,
+on is_dot to 8,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 6
+is_accept = false
+retract_by = 0
+# edges = 2
+Associated Token: INVALID
+Edges:
+on others to 48
+on is_digit to 6,
+on is_eE to 9,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 7
+is_accept = true
+retract_by = 1
+# edges = 0
+Associated Token: RNUM
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 8
+is_accept = true
+retract_by = 2
+# edges = 0
+Associated Token: NUM
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 9
+is_accept = false
+retract_by = 0
+# edges = 3
+Associated Token: INVALID
+Edges:
+on others to 48
+on is_plus to 10,
+on is_minus to 10,
+on is_digit to 11,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 10
+is_accept = false
+retract_by = 0
+# edges = 1
+Associated Token: INVALID
+Edges:
+on others to 48
+on is_digit to 11,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 11
+is_accept = false
+retract_by = 0
+# edges = 1
+Associated Token: INVALID
+Edges:
+on others to 7
+on is_digit to 11,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 12
+is_accept = false
+retract_by = 0
+# edges = 2
+Associated Token: INVALID
+Edges:
+on others to 17
+on is_less_than to 13,
+on is_equal to 16,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 13
+is_accept = false
+retract_by = 0
+# edges = 1
+Associated Token: INVALID
+Edges:
+on others to 15
+on is_less_than to 14,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 14
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: DRIVERDEF
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 15
+is_accept = true
+retract_by = 1
+# edges = 0
+Associated Token: DEF
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 16
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: LE
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 17
+is_accept = true
+retract_by = 1
+# edges = 0
+Associated Token: LT
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 18
+is_accept = false
+retract_by = 0
+# edges = 2
+Associated Token: INVALID
+Edges:
+on others to 23
+on is_greater_than to 19,
+on is_equal to 22,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 19
+is_accept = false
+retract_by = 0
+# edges = 1
+Associated Token: INVALID
+Edges:
+on others to 20
+on is_greater_than to 21,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 20
+is_accept = true
+retract_by = 1
+# edges = 0
+Associated Token: ENDDEF
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 21
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: DRIVERENDDEF
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 22
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: GE
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 23
+is_accept = true
+retract_by = 1
+# edges = 0
+Associated Token: GT
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 24
+is_accept = false
+retract_by = 0
+# edges = 1
+Associated Token: INVALID
+Edges:
+on others to 28
+on is_star to 25,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 25
+is_accept = false
+retract_by = 0
+# edges = 1
+Associated Token: INVALID
+Edges:
+on others to 25
+on is_star to 26,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 26
+is_accept = false
+retract_by = 0
+# edges = 1
+Associated Token: INVALID
+Edges:
+on others to 25
+on is_star to 27,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 27
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: COMMENTMARK
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 28
+is_accept = true
+retract_by = 1
+# edges = 0
+Associated Token: MUL
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 29
+is_accept = false
+retract_by = 0
+# edges = 1
+Associated Token: INVALID
+Edges:
+on others to 31
+on is_equal to 30,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 30
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: ASSIGN_OP
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 31
+is_accept = true
+retract_by = 1
+# edges = 0
+Associated Token: COLON
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 32
+is_accept = false
+retract_by = 0
+# edges = 1
+Associated Token: INVALID
+Edges:
+on others to 48
+on is_equal to 33,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 33
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: EQ
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 34
+is_accept = false
+retract_by = 0
+# edges = 1
+Associated Token: INVALID
+Edges:
+on others to 48
+on is_equal to 35,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 35
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: NE
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 36
+is_accept = false
+retract_by = 0
+# edges = 1
+Associated Token: INVALID
+Edges:
+on others to 48
+on is_dot to 37,
+--------------------------------------------------
+--------------------------------------------------
+State ID = 37
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: RANGEOP
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 38
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: PLUS
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 39
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: MINUS
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 40
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: DIV
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 41
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: SEMICOLON
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 42
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: COMMA
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 43
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: SQBO
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 44
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: SQBC
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 45
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: BO
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 46
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: BC
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 47
+is_accept = true
+retract_by = 0
+# edges = 0
+Associated Token: INVALID
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+--------------------------------------------------
+State ID = 48
+is_accept = false
+retract_by = 0
+# edges = 0
+Associated Token: INVALID
+Edges:
+on others to NOWHERE
+--------------------------------------------------
+# Tokens = 59
+Lexer's Token Types:
+0: PLUS
+1: MINUS
+2: MUL
+3: DIV
+4: LT
+5: GT
+6: COLON
+7: RANGEOP
+8: SEMICOLON
+9: COMMA
+10: SQBO
+11: SQBC
+12: BO
+13: BC
+14: LE
+15: GE
+16: EQ
+17: NE
+18: DEF
+19: ENDDEF
+20: ASSIGN_OP
+21: COMMENTMARK
+22: DRIVERDEF
+23: DRIVERENDDEF
+24: ID
+25: NUM
+26: RNUM
+27: INTEGER
+28: REAL
+29: BOOLEAN
+30: OF
+31: ARRAY
+32: START
+33: END
+34: DECLARE
+35: MODULE
+36: DRIVER
+37: PROGRAM
+38: GET_VALUE
+39: PRINT
+40: USE
+41: WITH
+42: PARAMETERS
+43: TAKES
+44: INPUT
+45: RETURNS
+46: FOR
+47: IN
+48: SWITCH
+49: CASE
+50: BREAK
+51: DEFAULT
+52: WHILE
+53: AND
+54: OR
+55: TRUE
+56: FALSE
+57: INVALID
+58: DOLLAR
+For source code from: lexer/lexer_files/test.erplag
+

@@ -1,0 +1,6 @@
+** test assignment statement left value array right value Relational **
+declare module mod1;
+<<<driver program>>>
+start
+     a[-1 + true - 2 * 3 -x/4 - (16)] := 1 >= 2 AND 2 <= 3 OR true;
+end

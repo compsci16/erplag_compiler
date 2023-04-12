@@ -1,0 +1,22 @@
+** Invalid function declaration: In this test case,
+ we define a function foo that takes two parameters x and y.
+ We then define another function bar that calls foo after its definition.
+ We also provide a declaration for foo, but the declaration has the wrong parameters.
+  Since the declaration does not match the definition, this code should produce an error. **
+
+  declare module foo;
+   <<module bar>>
+  takes input [x: integer, y: real];
+  start
+    use module foo with parameters y,x;
+  end
+
+  <<<driver program>>>
+  start
+  end
+
+  <<module foo>>
+  takes input [x: integer, y: real];
+  returns [z: boolean];
+  start
+  end

@@ -1,0 +1,26 @@
+** switch case without default and basic **
+declare module mod1;
+<<<driver program>>>
+start
+end
+<<module mod1>> takes input [LIST:array[4..20] of real];
+                returns [C:boolean];
+start
+    declare d:integer;
+    switch(flag)
+    start
+           case 1:
+                declare a: integer;
+                break;
+           case 2:
+                declare LIST1, LIST2: array[a..b] of integer;
+                break;
+    end
+
+end
+
+<<module mod2>> takes input [I: real, J: integer,LIST:array[4..20] of real];
+                returns [A: integer, B: real, C:boolean];
+start
+    declare X1,X2,X3: array[1..-e] of real;
+end

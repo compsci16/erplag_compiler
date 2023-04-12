@@ -1,0 +1,11 @@
+** Equality of lhs and rhs of assignment node  EASY**
+
+<<<driver program>>>
+start
+    declare a,b:integer;
+    declare c,d:real;
+    declare e,f:boolean;
+   ** a := b;   No error **
+    b := c;  **  Error **
+    e := a;   ** Error **
+end

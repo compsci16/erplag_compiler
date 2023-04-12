@@ -1,0 +1,14 @@
+Lexeme                    Line #     Token Type      Value (If Number)    Parent Node     Is Leaf    Node Symbol
+------                                                                    Mds             Yes        Md        
+------                                                                    Pro             No         Mds       
+------                                                                    Mds             Yes        Mds       
+------                                                                    Root            No         Pro       
+<<                        3          DEF                                  Mod             Yes        DEF       
+------                                                                    Oms             No         Mod       
+module                    3          MODULE                               Mod             Yes        MODULE    
+arraySum                  3          ID                                   Mod             Yes        ID        
+>>                        3          ENDDEF                               Mod             Yes        ENDDEF    
+------                                                                    Pro             No         Oms       
+------                                                                    Oms             Yes        Oms       
+------                                                                    Pro             Yes        Dm        
+------                                                                    Pro             Yes        Oms       

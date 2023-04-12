@@ -1,0 +1,27 @@
+declare module mod1;
+<<<driver program>>>
+start
+    declare var1, var2, var3: integer;
+    for(i in 1..2)
+        start
+            print(false);
+        end
+end
+
+<<module mod1>>
+takes input [a: integer, list:array[4..20] of real];
+returns [x: integer, y: real, z: boolean];
+start
+    print(3);
+    get_value(a);
+    for(i in 1..2)
+            start
+                print(false);
+                get_value(b);
+                    for(k in -1..-100)
+                            start
+                                print(10);
+                                print(20);
+                            end
+            end
+end

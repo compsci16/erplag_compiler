@@ -1,0 +1,62 @@
+Lexeme                    Line #     Token Type      Value (If Number)    Parent Node     Is Leaf    Node Symbol
+declare                   1          DECLARE                              Md              Yes        DECLARE   
+------                                                                    Mds             No         Md        
+module                    1          MODULE                               Md              Yes        MODULE    
+readArr                   1          ID                                   Md              Yes        ID        
+;                         1          SEMICOLON                              Md              Yes        SEMICOLON
+------                                                                    Pro             No         Mds       
+------                                                                    Mds             Yes        Mds       
+------                                                                    Root            No         Pro       
+<<                        3          DEF                                  Mod             Yes        DEF       
+------                                                                    Oms             No         Mod       
+module                    3          MODULE                               Mod             Yes        MODULE    
+arraySum                  3          ID                                   Mod             Yes        ID        
+>>                        3          ENDDEF                               Mod             Yes        ENDDEF    
+takes                     4          TAKES                                Mod             Yes        TAKES     
+input                     4          INPUT                                Mod             Yes        INPUT     
+[                         4          SQBO                                 Mod             Yes        SQBO      
+list                      4          ID                                   Ipl             Yes        ID        
+------                                                                    Mod             No         Ipl       
+:                         4          COLON                                Ipl             Yes        COLON     
+array                     4          ARRAY                                Dt              Yes        ARRAY     
+------                                                                    Ipl             No         Dt        
+[                         4          SQBO                                 Dt              Yes        SQBO      
+------                                                                    Rng             Yes        Sign      
+------                                                                    Dt              No         Rng       
+1                         4          NUM             1                    numOrId              Yes        NUM
+------                                                                    X               No         numOrId
+------                                                                    Rng             No         X         
+..                        4          RANGEOP                              X               Yes        RANGEOP   
+------                                                                    X               Yes        Sign      
+15                        4          NUM             15                   numOrId              Yes        NUM
+------                                                                    X               No         numOrId
+]                         4          SQBC                                 Dt              Yes        SQBC      
+of                        4          OF                                   Dt              Yes        OF        
+real                      4          REAL                                 arrayDataType              Yes        REAL
+------                                                                    Dt              No         arrayDataType
+,                         4          COMMA                                Zipl            Yes        COMMA     
+------                                                                    Ipl             No         Zipl      
+n                         4          ID                                   Zipl            Yes        ID        
+------                                                                    Zipl            Yes        L�     
+integer                   4          INTEGER                              Dt              Yes        INTEGER   
+------                                                                    Zipl            No         Dt        
+------                                                                    Zipl            Yes        Zipl      
+]                         4          SQBC                                 Mod             Yes        SQBC      
+;                         4          SEMICOLON                              Mod             Yes        SEMICOLON
+returns                   5          RETURNS                              returnList             Yes        RETURNS
+------                                                                    Mod             No         returnList
+[                         5          SQBO                                 returnList             Yes        SQBO
+sum                       5          ID                                   outputParameterList             Yes        ID
+------                                                                    returnList             No         outputParameterList
+:                         5          COLON                                outputParameterList             Yes        COLON
+real                      5          REAL                                 arrayDataType              Yes        REAL
+------                                                                    outputParameterList             No         arrayDataType
+------                                                                    outputParameterList             Yes        ZOutputParameterList
+]                         5          SQBC                                 returnList             Yes        SQBC
+;                         5          SEMICOLON                              returnList             Yes        SEMICOLON
+start                     6          START                                Mdef            Yes        START     
+------                                                                    Mod             No         Mdef      
+for                       7          FOR                                  iterativeStatement           Yes        FOR
+------                                                                    Stmt            No         iterativeStatement
+(                         7          BO                                   iterativeStatement           Yes        BO
+index                     7          ID                                   iterativeStatement           Yes        ID

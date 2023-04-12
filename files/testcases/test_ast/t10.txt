@@ -1,0 +1,13 @@
+declare module mod1;
+<<<driver program>>>
+start
+    print(2);
+end
+
+<<module mod1>>
+takes input [a: integer, b: real, c: boolean, d:integer];
+returns [x: integer, y: real, z: boolean];
+start
+    print(3);
+    get_value(a);
+end

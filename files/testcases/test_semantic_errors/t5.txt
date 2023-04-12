@@ -1,0 +1,23 @@
+** function overloading + multiple declaration + repeat in params **
+** simple redeclaration - different type **
+<<<driver program>>>
+start
+    declare a,b,a:integer;
+    declare a,b,c:integer;
+    declare c: real;
+    declare b: boolean;
+end
+
+<<module mod1>>
+takes input [i: real, i: integer];
+start
+    declare i: integer;
+    declare i: real;
+end
+
+<<module mod1>>
+takes input [i: real, i: boolean];
+start
+     declare a: integer;
+     declare a: real;
+end

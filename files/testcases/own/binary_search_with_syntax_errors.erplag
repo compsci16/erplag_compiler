@@ -1,0 +1,54 @@
+<<<driver program>>>
+start
+    declare low, high, target, n, res: integer;
+    n := 20;
+    target := n+2;
+    declare A: array [1...n] of integer;       **ERROR 1**
+    for(i in 1..20)
+    start
+        declare k:integer;
+        get_value(k)                          **ERROR 2**
+        A[i] := k;
+    end
+    low := 1;
+    high := 20;
+    while(low <= high                     **ERROR 4**
+    start
+        declare mid: integer;
+        mid := (low + (high - low) / 2);
+        declare flag1: boolean;
+        flag1 := A[min] == target;
+        switch(flag1)
+        start
+            case true:
+                res := mid;
+                low := high + 1;
+                break;
+            case false:
+                declare flag2: boolan;          **ERROR 5**
+                flag2 := A[mid] < target;
+                switch(flag2)
+                start
+                    case true:
+                        low := mid + 1;
+                        break;
+                    case false:
+                        high := mid - 1;
+                        break;
+                end
+                break;
+        end
+    end
+    declare print: boolean;          **ERROR 6**
+    res := -(res * 1);
+    found := res != 1;
+    switch(found)
+    start
+        case true:
+            print(res);
+            break;
+        case false:
+            print(1);
+            break;
+    end
+end

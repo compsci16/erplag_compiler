@@ -1,0 +1,20 @@
+** for FOR **
+declare module mod1;
+<<<driver program>>>
+start
+end
+<<module mod1>> takes input [I: real, J: integer,LIST:array[4..20] of real];
+                returns [A: integer, B: real, C:boolean];
+start
+    declare d, e, f :integer;
+    for(k in -2..3)
+    start
+         x:=x+2*k;
+    end
+end
+
+<<module mod2>> takes input [I: real, J: integer,LIST:array[4..20] of real];
+                returns [A: integer, B: real, C:boolean];
+start
+    declare X1,X2,X3: array[1..-e] of real;
+end

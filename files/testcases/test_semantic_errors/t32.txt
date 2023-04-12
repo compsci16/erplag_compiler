@@ -1,0 +1,15 @@
+** Test undeclared switch id **
+
+<<<driver program>>>
+start
+   switch(a)                          ** Use of undeclared identifier **
+   start
+      case 23: print(23);
+               break;
+      default : print(23);
+                break;
+   end
+   declare a:integer;
+   declare a:integer;
+   print(a);
+end

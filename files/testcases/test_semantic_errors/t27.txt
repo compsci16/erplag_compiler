@@ -1,0 +1,22 @@
+** Invalid function call without declaration:
+ In this test case, we define a function foo that takes two parameters x and y.
+ We then define another function bar that calls foo before its definition. Since foo is not defined before bar,
+ a declaration is required. Since there is no declaration, this code should produce an error. **
+
+<<<driver program>>>
+start
+end
+
+<<module bar>> takes input [x: integer, y: real];
+start
+  for (i in 1..20)
+    start
+        use module foo with parameters x, y;
+    end
+end
+
+<<module foo>>
+takes input [x: integer, y: real];
+returns [z: boolean];
+start
+end

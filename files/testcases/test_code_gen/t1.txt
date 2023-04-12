@@ -1,0 +1,9 @@
+** test print **
+<<<driver program>>>
+start
+    declare a: integer;
+    declare b: boolean;
+    declare c: real;
+    get_value(a);
+    get_value(b);
+end

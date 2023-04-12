@@ -1,0 +1,20 @@
+** for module with declare **
+declare module mod1;
+<<<driver program>>>
+start
+end
+<<module mod1>> takes input [i: real, j: integer,list:array[4..20] of real];
+                returns [a: integer, b: real, c:boolean];
+start
+    declare v, w, r :integer;
+    **declare A,B,C:array [1..10] of integer;**
+end
+
+<<module mod2>> takes input [list:array[4..20] of real];
+                returns [a: integer, b: real, c:boolean];
+start
+end
+
+<<module mod3>> takes input [a: integer];
+start
+end

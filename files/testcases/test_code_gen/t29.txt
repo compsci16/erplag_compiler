@@ -1,0 +1,55 @@
+<<< driver program >>>
+start
+declare a: boolean;
+declare b: integer;
+a := true;
+get_value(a);
+get_value(b);
+    switch (a)
+    start
+       case true:
+            print(true);
+            print(b);
+            break;
+       case false:
+            print(false);
+            print(a);
+            break;
+    end
+
+    declare x: integer;
+    get_value(x);
+   switch (x)
+        start
+            case 1:
+                declare x: integer;
+                declare y: integer;
+                get_value(x);
+                get_value(y);
+                print(x);
+
+                switch(x)
+                start
+                    case 1:
+                    print(true);
+                    break;
+                    case 2:
+                    print(false);
+                    break;
+                    default:
+                    print(3);
+                    break;
+                end
+                break;
+            case 2:
+                declare x: integer;
+                declare y: integer;
+                get_value(x);
+                get_value(y);
+                print(y);
+                break;
+            default:
+                print(false);
+                break;
+        end
+end

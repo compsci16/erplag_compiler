@@ -1,0 +1,7 @@
+** test module use basic **
+declare module mod1;
+<<<driver program>>>
+start
+    [a,c] := use module mod1 with parameters z,u,-9,9.87,a[x+z];
+    **[a,c] := use module mod1 with parameters a[1];**
+end

@@ -1,0 +1,5 @@
+** print int **
+<<<driver program>>>
+start
+    print(1);
+end

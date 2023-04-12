@@ -1,0 +1,11 @@
+<<<driver program>>>
+start
+    declare a: integer;
+    declare b: integer;
+    declare c: array[-3..2] of integer;
+    declare x: boolean;
+    get_value(a);
+    get_value(b);
+    get_value(c);
+    print(c);
+end

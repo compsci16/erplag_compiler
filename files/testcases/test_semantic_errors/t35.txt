@@ -1,0 +1,24 @@
+** Testing whether return parameters are assigned a value **
+<<module mod1>>
+takes input[list: array[1..20] of real];
+returns [b:integer, x: boolean];
+start
+    b := 1000000;
+    get_value(x);
+end
+
+
+<<module mod2>>
+takes input[a:integer];
+returns [a: integer, b:integer, b2: integer,c:boolean, d:real];
+start
+    a:= 4;                 ** a assigned **
+    get_value(b);               ** b assigned **
+
+    declare arr: array[1..20] of real;
+    [b2, c] = use module mod1 with parameters arr;
+end
+
+<<<driver program>>>
+start
+end

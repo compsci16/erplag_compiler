@@ -1,0 +1,15 @@
+** module called with correct return - BASIC **
+declare module mod1;
+<<<driver program>>>
+start
+    declare a: integer;
+    use module mod1 with parameters a; ** mod1 returns an integer but calling code is not using those **
+    [a] := use module mod1 with parameters a; ** correct **
+end
+
+
+<<module mod1>>
+takes input [K: integer];
+returns [a: integer];
+start
+end

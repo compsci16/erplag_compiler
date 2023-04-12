@@ -1,0 +1,8 @@
+<<<driver program>>>
+start
+declare a: integer;
+declare A: array[-1..0] of integer; ** a[0] - 30 **
+get_value(A);
+a := A[-1];
+** a := a+x+A[-1]*2 + A[0]*3 + A[-1]; */* 10 + 20 + 60 + 40*3 + 30 **print(a);
+end

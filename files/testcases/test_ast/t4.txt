@@ -1,0 +1,6 @@
+<<<driver program>>>
+start
+    get_value(v);
+    get_value(a);
+    print(1);
+end

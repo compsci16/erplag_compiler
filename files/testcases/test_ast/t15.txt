@@ -1,0 +1,26 @@
+**test declare ast + multiple modules**
+declare module mod1;
+declare module mod2;
+
+<<module mod1>>
+takes input [a: integer, list:array[4..20] of real];
+returns [x: integer, y: real, z: boolean];
+start
+    print(3);
+end
+
+<<<driver program>>>
+start
+    declare var1, var2, var3: array[-1..2] of integer;
+    for(i in 1..2)
+        start
+            print(false);
+        end
+end
+
+<<module mod2>>
+takes input [a: integer, list:array[4..20] of real];
+returns [x: integer, y: real, z: boolean];
+start
+    print(3);
+end

@@ -1,0 +1,4 @@
+<<<driver program>>>
+start
+    , a + A[-y+(2 - y - x * (3))];
+end

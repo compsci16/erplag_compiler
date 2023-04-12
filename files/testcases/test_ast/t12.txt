@@ -1,0 +1,13 @@
+declare module mod1;
+<<<driver program>>>
+start
+    print(2);
+end
+
+<<module mod1>>
+takes input [a: integer, list1:array[4..20] of real, list2:array[-4..-20] of boolean, list3:array[-10..+20] of integer];
+returns [x: integer, y: real, z: boolean,  list:boolean];
+start
+    print(3);
+    get_value(a);
+end

@@ -1,0 +1,46 @@
+** switch, while, for nested **
+declare module mod1;
+<<<driver program>>>
+start
+end
+<<module mod1>> takes input [LIST:array[4..20] of real];
+                returns [C:boolean];
+start
+    declare d:integer;
+    while (i <= k)
+    start
+        declare D1, D2: boolean;
+        for (k in 1..10)
+            start
+                declare X1: array[2..3] of integer;
+                while (j <= p)
+                start
+                    declare a:boolean;
+                    switch(flag)
+                       start
+                              case true:
+                                   declare b: integer;
+                                   for (n in 1..100)
+                                   start
+                                        declare LIST_X: array[2..0] of boolean;
+                                   end
+                                   break;
+                              case false :
+                                   get_value(a);
+                                   break;
+                              default:
+                                  declare a: integer;
+                                  declare dft_array: array[-1..0] of real;
+                                  break;
+                       end
+                end
+            end
+    end
+
+end
+
+<<module mod2>> takes input [I: real, J: integer,LIST:array[4..20] of real];
+                returns [A: integer, B: real, C:boolean];
+start
+    declare X1,X2,X3: array[1..-e] of real;
+end

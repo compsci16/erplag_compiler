@@ -1,0 +1,27 @@
+** for redefines with integer**
+declare module mod1;
+declare module mod2;
+<<<driver program>>>
+start
+    for (i in -2..3)
+    start
+        declare i: integer;
+    end
+end
+
+<<module mod1>>
+takes input [i: real, i: integer];
+start
+end
+
+<<module mod1>>
+takes input [i: real, i: integer];
+start
+     declare a: integer;
+end
+
+<<module mod1>>
+takes input [i: real, i: boolean];
+start
+     declare a: real;
+end

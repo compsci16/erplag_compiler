@@ -1,0 +1,19 @@
+** get_val + print **
+** print int **
+declare module mod1;
+<<<driver program>>>
+start
+    declare a: integer;
+    declare b: integer;
+    declare x: boolean;
+    get_value(a);
+    get_value(b);
+    x := a > b;
+    print(x);
+    x := a >= b;
+    print(x);
+    x := a < b;
+    print(x);
+    x := a <= b;
+    print(x);
+end

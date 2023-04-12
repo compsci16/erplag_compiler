@@ -1,0 +1,52 @@
+** Testing equality of type of switch statement id and case value tag **
+
+declare module mod1;
+
+<<module mod1>>
+takes input [K: array[1..20] of integer];
+returns [c:integer, b:boolean];
+start
+
+end
+
+<<<driver program>>>
+start
+   declare a:integer;
+   declare b:real;
+   declare c:boolean;
+
+   switch(a)                          ** Integer :- No Error **
+   start
+      case 23: print(8);
+               break;
+      case 2: print(8);
+                break;
+      case true: print(8);        ** Error **
+                 break;
+      default : print(8);
+                break;
+   end
+
+   switch(c)                      ** Boolean :- No Error **
+   start
+      case true: print(8);
+                 break;
+      case false: print(8);
+                  break;
+      case 3: print(8);           ** Error **
+              break;
+   end
+
+   switch(b)                      ** Real in switch :- Error **
+   start
+      case 3: print(8);           ** Error **
+                break;
+   end
+
+   switch(mod1)                      ** Function in switch :- Error **
+      start
+         case 3: print(8);           ** Error **
+                   break;
+      end
+
+end

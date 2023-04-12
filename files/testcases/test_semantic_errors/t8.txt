@@ -1,0 +1,18 @@
+** for redefines with integer and different types**
+declare module mod1;
+declare module mod2;
+<<<driver program>>>
+start
+    declare i: real;
+    for (i in -2..3)
+    start
+        declare i: integer;
+        declare i: array[4..20] of integer;
+        declare i: real;
+    end
+end
+
+<<module mod1>>
+takes input [i: real];
+start
+end

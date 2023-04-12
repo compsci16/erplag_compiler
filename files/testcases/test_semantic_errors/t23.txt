@@ -1,0 +1,12 @@
+** Testing errors given by DIV operator  EASY**
+
+<<<driver program>>>
+start
+    declare a,b:integer;
+    declare c,d:real;
+    declare e,f:boolean;
+    d := b/56 + a/b;                                  ** No error **
+    c := c/34.6 + c/d + d/a - 12/a - b/43.987;        ** No Error **
+    a := a/b;                                         ** Error :- LHS should be real **
+    c := a/89.8 + 3.456/c + e/a;                      ** Error :- DIV cannot have boolean as an operand**
+end

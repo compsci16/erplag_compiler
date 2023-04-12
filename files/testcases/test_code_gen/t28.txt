@@ -1,0 +1,42 @@
+<<< driver program >>>
+start
+declare a: integer;
+declare b: integer;
+a:=1;
+    switch (a)
+    start
+        case 1:
+            a:=a+1;
+            b:=a+5;
+            print(a);
+            print(b);
+
+
+            switch(a)
+            start
+                case 1:
+                print(true);
+                break;
+                case 2:
+                declare c:integer;
+                c:=a+b;
+                print(c);
+                break;
+                default:
+                print(3);
+                break;
+            end
+
+
+            break;
+        case 2:
+            print(0);
+            print(false);
+            print(0);
+            break;
+        default:
+            print(false);
+            break;
+    end
+    print(a);
+end

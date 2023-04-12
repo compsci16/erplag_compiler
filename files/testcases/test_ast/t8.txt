@@ -1,0 +1,8 @@
+declare module mod1;
+declare module mod2;
+declare module abcd;
+declare module efgh;
+<<<driver program>>>
+start
+    print(2);
+end

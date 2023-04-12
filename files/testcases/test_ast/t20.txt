@@ -1,0 +1,9 @@
+** test while basic **
+declare module mod1;
+<<<driver program>>>
+start
+     while(true)
+        start
+            print(3);
+        end
+end

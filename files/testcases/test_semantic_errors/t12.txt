@@ -1,0 +1,19 @@
+** module called with incorrect type of parameters - BASIC **
+declare module mod1;
+<<<driver program>>>
+start
+    declare a: boolean;
+    declare b: integer;
+    use module mod1 with parameters a,b; ** correct call **
+    declare c: real;
+    use module mod1 with parameters a,c; ** wrong **
+    use module mod1 with parameters c,c; ** wrong **
+    use module mod1 with parameters a,a; ** wrong **
+end
+
+
+<<module mod1>>
+takes input [k: boolean, r: integer];
+start
+
+end

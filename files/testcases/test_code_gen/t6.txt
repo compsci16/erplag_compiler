@@ -1,0 +1,18 @@
+** get_val + print **
+** print int **
+declare module mod1;
+<<<driver program>>>
+start
+    declare a: integer;
+    declare b: integer;
+    get_value(a);
+    get_value(b);
+    print(a);
+    print(b);
+    print(2.564);
+end
+
+<<module mod1>> takes input [a: integer];
+start
+    declare i: integer;
+end

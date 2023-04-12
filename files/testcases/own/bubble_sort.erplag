@@ -1,0 +1,38 @@
+start
+    declare i,j,n:integer;
+    n := 15;
+    declare A:array [1..n] of integer;
+
+    for(i in 1..15)
+    start
+        declare k:integer;
+        get_value(k);
+        A[i] := k;
+    end
+
+    for( i in 1..14)
+    start
+        j := 1;
+        while(j<(n-i+1))
+        start
+            declare cond:bool;
+            cond := (A[j]>A[j+1]);
+            switch(cond)
+            start
+                case true :
+                    declare temp:integer;
+                    temp := A[j];
+                    A[j] := A[j+1];
+                    A[j+1] := temp;
+                    break;
+                case false :
+                    break;
+            end
+        end
+    end
+
+    for(i in 1..15)
+    start
+        print(A[i]);
+    end
+end

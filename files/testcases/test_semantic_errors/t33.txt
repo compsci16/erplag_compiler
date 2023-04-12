@@ -1,0 +1,10 @@
+** Test error printing for undeclared get value id **
+
+<<<driver program>>>
+start
+   declare a:integer;
+   get_value(a);
+   get_value(b);
+   declare b:integer;
+   get_value(b);
+end

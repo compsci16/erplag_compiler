@@ -1,0 +1,9 @@
+** Test error printing for undeclared print id **
+
+<<<driver program>>>
+start
+   declare a:integer;
+   print(a);
+   print(b);
+   declare b:integer;
+end

@@ -1,0 +1,9 @@
+8
+0 : is_alpha=1,is_underscore=1,is_plus=3,is_star=4,is_bracket_open=5,is_bracket_close=6
+1 : is_alpha=1,is_underscore=1,is_digit=1
+2 :
+3 :
+4 :
+5 :
+6 :
+7 :

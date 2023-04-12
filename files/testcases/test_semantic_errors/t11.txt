@@ -1,0 +1,18 @@
+** module called with incorrect # of parameters - BASIC **
+declare module mod1;
+<<<driver program>>>
+start
+    declare a: boolean;
+    declare b: integer;
+    use module mod1 with parameters a,b; ** correct call **
+    declare c: real;
+    use module mod1 with parameters a; ** wrong **
+    use module mod1 with parameters a; ** wrong **
+end
+
+
+<<module mod1>>
+takes input [k: boolean, r: integer];
+start
+
+end

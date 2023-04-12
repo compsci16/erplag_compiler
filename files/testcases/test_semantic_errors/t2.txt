@@ -1,0 +1,6 @@
+** simple redeclaration - same type **
+<<<driver program>>>
+start
+    declare a,b,a:integer;
+    declare b,c:integer;
+end

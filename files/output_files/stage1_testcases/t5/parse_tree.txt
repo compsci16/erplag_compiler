@@ -1,0 +1,718 @@
+Lexeme                    Line #     Token Type      Value (If Number)    Parent Node     Is Leaf    Node Symbol
+declare                   1          DECLARE                              Md              Yes        DECLARE   
+------                                                                    Mds             No         Md        
+module                    1          MODULE                               Md              Yes        MODULE    
+readArr                   1          ID                                   Md              Yes        ID        
+;                         1          SEMICOLON                              Md              Yes        SEMICOLON
+------                                                                    Pro             No         Mds       
+------                                                                    Mds             Yes        Mds       
+------                                                                    Root            No         Pro       
+<<                        3          DEF                                  Mod             Yes        DEF       
+------                                                                    Oms             No         Mod       
+module                    3          MODULE                               Mod             Yes        MODULE    
+arraySum                  3          ID                                   Mod             Yes        ID        
+>>                        3          ENDDEF                               Mod             Yes        ENDDEF    
+takes                     4          TAKES                                Mod             Yes        TAKES     
+input                     4          INPUT                                Mod             Yes        INPUT     
+[                         4          SQBO                                 Mod             Yes        SQBO      
+list                      4          ID                                   Ipl             Yes        ID        
+------                                                                    Mod             No         Ipl       
+:                         4          COLON                                Ipl             Yes        COLON     
+array                     4          ARRAY                                Dt              Yes        ARRAY     
+------                                                                    Ipl             No         Dt        
+[                         4          SQBO                                 Dt              Yes        SQBO      
+------                                                                    Rng             Yes        Sign      
+------                                                                    Dt              No         Rng       
+1                         4          NUM             1                    numOrId              Yes        NUM
+------                                                                    X               No         numOrId
+------                                                                    Rng             No         X         
+..                        4          RANGEOP                              X               Yes        RANGEOP   
+------                                                                    X               Yes        Sign      
+15                        4          NUM             15                   numOrId              Yes        NUM
+------                                                                    X               No         numOrId
+]                         4          SQBC                                 Dt              Yes        SQBC      
+of                        4          OF                                   Dt              Yes        OF        
+real                      4          REAL                                 arrayDataType              Yes        REAL
+------                                                                    Dt              No         arrayDataType
+,                         4          COMMA                                Zipl            Yes        COMMA     
+------                                                                    Ipl             No         Zipl      
+n                         4          ID                                   Zipl            Yes        ID        
+:                         4          COLON                                Zipl            Yes        COLON     
+integer                   4          INTEGER                              Dt              Yes        INTEGER   
+------                                                                    Zipl            No         Dt        
+------                                                                    Zipl            Yes        Zipl      
+]                         4          SQBC                                 Mod             Yes        SQBC      
+;                         4          SEMICOLON                              Mod             Yes        SEMICOLON
+returns                   5          RETURNS                              returnList             Yes        RETURNS
+------                                                                    Mod             No         returnList
+[                         5          SQBO                                 returnList             Yes        SQBO
+sum                       5          ID                                   outputParameterList             Yes        ID
+------                                                                    returnList             No         outputParameterList
+:                         5          COLON                                outputParameterList             Yes        COLON
+real                      5          REAL                                 arrayDataType              Yes        REAL
+------                                                                    outputParameterList             No         arrayDataType
+------                                                                    outputParameterList             Yes        ZOutputParameterList
+]                         5          SQBC                                 returnList             Yes        SQBC
+;                         5          SEMICOLON                              returnList             Yes        SEMICOLON
+start                     6          START                                Mdef            Yes        START     
+------                                                                    Mod             No         Mdef      
+declare                   7          DECLARE                              declareStatement         Yes        DECLARE
+------                                                                    Stmt            No         declareStatement
+index                     7          ID                                   idList             Yes        ID
+------                                                                    declareStatement         No         idList
+------                                                                    idList             Yes        ZIdList
+:                         7          COLON                                declareStatement         Yes        COLON
+integer                   7          INTEGER                              Dt              Yes        INTEGER   
+------                                                                    declareStatement         No         Dt
+;                         7          SEMICOLON                              declareStatement         Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    Mdef            No         statements
+declare                   8          DECLARE                              declareStatement         Yes        DECLARE
+------                                                                    Stmt            No         declareStatement
+t                         8          ID                                   idList             Yes        ID
+------                                                                    declareStatement         No         idList
+------                                                                    idList             Yes        ZIdList
+:                         8          COLON                                declareStatement         Yes        COLON
+boolean                   8          BOOLEAN                              Dt              Yes        BOOLEAN   
+------                                                                    declareStatement         No         Dt
+;                         8          SEMICOLON                              declareStatement         Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+sum                       9          ID                                   assignmentStatement           Yes        ID
+------                                                                    simpleStatement         No         assignmentStatement
+:=                        9          ASSIGN_OP                             leftValueId        Yes        ASSIGN_OP
+------                                                                    whichAssignment           No         leftValueId
+0.0                       9          RNUM            0.000000             arithmeticFactor            Yes        RNUM
+------                                                                    arithmeticTerm             No         arithmeticFactor
+------                                                                    arithmeticExpression            No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    booleanTerm          No         arithmeticExpression
+------                                                                    arithmeticExpression            Yes        ZArithmeticExpression
+------                                                                    arithmeticOrBooleanExpression          No         booleanTerm
+------                                                                    booleanTerm          Yes        ZBooleanTerm
+------                                                                    Expr            No         arithmeticOrBooleanExpression
+------                                                                    arithmeticOrBooleanExpression          Yes        ZArithmeticOrBooleanExpression
+------                                                                    leftValueId        No         Expr
+;                         9          SEMICOLON                              leftValueId        Yes        SEMICOLON
+------                                                                    assignmentStatement           No         whichAssignment
+------                                                                    Stmt            No         simpleStatement
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+for                       10         FOR                                  iterativeStatement           Yes        FOR
+------                                                                    Stmt            No         iterativeStatement
+(                         10         BO                                   iterativeStatement           Yes        BO
+index                     10         ID                                   iterativeStatement           Yes        ID
+in                        10         IN                                   iterativeStatement           Yes        IN
+-                         10         MINUS                                Sign            Yes        MINUS     
+------                                                                    forRange            No         Sign
+------                                                                    iterativeStatement           No         forRange
+10                        10         NUM             10                   forRange            Yes        NUM
+..                        10         RANGEOP                              forRange            Yes        RANGEOP
++                         10         PLUS                                 Sign            Yes        PLUS      
+------                                                                    forRange            No         Sign
+15                        10         NUM             15                   forRange            Yes        NUM
+)                         10         BC                                   iterativeStatement           Yes        BC
+start                     11         START                                iterativeStatement           Yes        START
+t                         12         ID                                   assignmentStatement           Yes        ID
+------                                                                    simpleStatement         No         assignmentStatement
+:=                        12         ASSIGN_OP                             leftValueId        Yes        ASSIGN_OP
+------                                                                    whichAssignment           No         leftValueId
+index                     12         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+------                                                                    arithmeticFactor            Yes        arrayBracket
+------                                                                    arithmeticExpression            No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    booleanTerm          No         arithmeticExpression
+------                                                                    arithmeticExpression            Yes        ZArithmeticExpression
+------                                                                    arithmeticOrBooleanExpression          No         booleanTerm
+<=                        12         LE                                   relationalOperator             Yes        LE
+------                                                                    ZBooleanTerm         No         relationalOperator
+------                                                                    booleanTerm          No         ZBooleanTerm
+n                         12         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+------                                                                    arithmeticFactor            Yes        arrayBracket
+------                                                                    arithmeticExpression            No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    ZBooleanTerm         No         arithmeticExpression
+------                                                                    arithmeticExpression            Yes        ZArithmeticExpression
+------                                                                    Expr            No         arithmeticOrBooleanExpression
+------                                                                    arithmeticOrBooleanExpression          Yes        ZArithmeticOrBooleanExpression
+------                                                                    leftValueId        No         Expr
+;                         12         SEMICOLON                              leftValueId        Yes        SEMICOLON
+------                                                                    assignmentStatement           No         whichAssignment
+------                                                                    Stmt            No         simpleStatement
+------                                                                    statements           No         Stmt
+------                                                                    iterativeStatement           No         statements
+switch                    13         SWITCH                               Constmt         Yes        SWITCH    
+------                                                                    Stmt            No         Constmt   
+(                         13         BO                                   Constmt         Yes        BO        
+t                         13         ID                                   Constmt         Yes        ID        
+)                         13         BC                                   Constmt         Yes        BC        
+start                     14         START                                Constmt         Yes        START     
+case                      15         CASE                                 Cstmt           Yes        CASE      
+------                                                                    Constmt         No         Cstmt     
+true                      15         TRUE                                 Caseval         Yes        TRUE      
+------                                                                    Cstmt           No         Caseval   
+:                         15         COLON                                Cstmt           Yes        COLON     
+print                     15         PRINT                                Iostmt          Yes        PRINT     
+------                                                                    Stmt            No         Iostmt    
+(                         15         BO                                   Iostmt          Yes        BO        
+list                      15         ID                                   Valpr           Yes        ID        
+------                                                                    Iostmt          No         Valpr     
+[                         15         SQBO                                 Prarr           Yes        SQBO      
+------                                                                    Valpr           No         Prarr     
++                         15         PLUS                                 Sign            Yes        PLUS      
+------                                                                    Prarr           No         Sign      
+index                     15         ID                                   numOrId              Yes        ID
+------                                                                    Prarr           No         numOrId
+]                         15         SQBC                                 Prarr           Yes        SQBC      
+)                         15         BC                                   Iostmt          Yes        BC        
+;                         15         SEMICOLON                              Iostmt          Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    Cstmt           No         statements
+sum                       16         ID                                   assignmentStatement           Yes        ID
+------                                                                    simpleStatement         No         assignmentStatement
+:=                        16         ASSIGN_OP                             leftValueId        Yes        ASSIGN_OP
+------                                                                    whichAssignment           No         leftValueId
+sum                       16         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+------                                                                    arithmeticFactor            Yes        arrayBracket
+------                                                                    arithmeticExpression            No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    booleanTerm          No         arithmeticExpression
++                         16         PLUS                                 addSubOp             Yes        PLUS
+------                                                                    ZArithmeticExpression           No         addSubOp
+------                                                                    arithmeticExpression            No         ZArithmeticExpression
+list                      16         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+[                         16         SQBO                                 arrayBracket          Yes        SQBO
+------                                                                    arithmeticFactor            No         arrayBracket
+------                                                                    arrayIndex             Yes        Sign
+------                                                                    arrayBracket          No         arrayIndex
+index                     16         ID                                   arrayFactor         Yes        ID
+------                                                                    arrayTerm         No         arrayFactor
+------                                                                    arrayExpression          No         arrayTerm
+------                                                                    arrayTerm         Yes        ZArrayTerm
+------                                                                    arrayIndex             No         arrayExpression
+------                                                                    arrayExpression          Yes        ZArrayExpression
+]                         16         SQBC                                 arrayBracket          Yes        SQBC
+------                                                                    ZArithmeticExpression           No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    ZArithmeticExpression           Yes        ZArithmeticExpression
+------                                                                    arithmeticOrBooleanExpression          No         booleanTerm
+------                                                                    booleanTerm          Yes        ZBooleanTerm
+------                                                                    Expr            No         arithmeticOrBooleanExpression
+------                                                                    arithmeticOrBooleanExpression          Yes        ZArithmeticOrBooleanExpression
+------                                                                    leftValueId        No         Expr
+;                         16         SEMICOLON                              leftValueId        Yes        SEMICOLON
+------                                                                    assignmentStatement           No         whichAssignment
+------                                                                    Stmt            No         simpleStatement
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+------                                                                    statements           Yes        statements
+break                     17         BREAK                                Cstmt           Yes        BREAK     
+;                         17         SEMICOLON                              Cstmt           Yes        SEMICOLON
+case                      18         CASE                                 Cstmt           Yes        CASE      
+------                                                                    Cstmts          No         Cstmt     
+false                     18         FALSE                                Caseval         Yes        FALSE     
+------                                                                    Cstmt           No         Caseval   
+:                         18         COLON                                Cstmt           Yes        COLON     
+print                     18         PRINT                                Iostmt          Yes        PRINT     
+------                                                                    Stmt            No         Iostmt    
+(                         18         BO                                   Iostmt          Yes        BO        
+sum                       18         ID                                   Valpr           Yes        ID        
+------                                                                    Iostmt          No         Valpr     
+------                                                                    Valpr           Yes        Prarr     
+)                         18         BC                                   Iostmt          Yes        BC        
+;                         18         SEMICOLON                              Iostmt          Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    Cstmt           No         statements
+print                     19         PRINT                                Iostmt          Yes        PRINT     
+------                                                                    Stmt            No         Iostmt    
+(                         19         BO                                   Iostmt          Yes        BO        
+index                     19         ID                                   Valpr           Yes        ID        
+------                                                                    Iostmt          No         Valpr     
+------                                                                    Valpr           Yes        Prarr     
+)                         19         BC                                   Iostmt          Yes        BC        
+;                         19         SEMICOLON                              Iostmt          Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+------                                                                    statements           Yes        statements
+break                     21         BREAK                                Cstmt           Yes        BREAK     
+;                         21         SEMICOLON                              Cstmt           Yes        SEMICOLON
+------                                                                    Constmt         No         Cstmts    
+------                                                                    Cstmts          Yes        Cstmts    
+------                                                                    Constmt         Yes        Dft       
+end                       22         END                                  Constmt         Yes        END       
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+------                                                                    statements           Yes        statements
+end                       24         END                                  iterativeStatement           Yes        END
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+print                     25         PRINT                                Iostmt          Yes        PRINT     
+------                                                                    Stmt            No         Iostmt    
+(                         25         BO                                   Iostmt          Yes        BO        
+sum                       25         ID                                   Valpr           Yes        ID        
+------                                                                    Iostmt          No         Valpr     
+------                                                                    Valpr           Yes        Prarr     
+)                         25         BC                                   Iostmt          Yes        BC        
+;                         25         SEMICOLON                              Iostmt          Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+------                                                                    statements           Yes        statements
+end                       26         END                                  Mdef            Yes        END       
+------                                                                    Pro             No         Oms       
+------                                                                    Oms             Yes        Oms       
+<<<                       27         DRIVERDEF                            Dm              Yes        DRIVERDEF 
+------                                                                    Pro             No         Dm        
+driver                    27         DRIVER                               Dm              Yes        DRIVER    
+program                   27         PROGRAM                              Dm              Yes        PROGRAM   
+>>>                       27         DRIVERENDDEF                         Dm              Yes        DRIVERENDDEF
+start                     28         START                                Mdef            Yes        START     
+------                                                                    Dm              No         Mdef      
+declare                   29         DECLARE                              declareStatement         Yes        DECLARE
+------                                                                    Stmt            No         declareStatement
+A                         29         ID                                   idList             Yes        ID
+------                                                                    declareStatement         No         idList
+------                                                                    idList             Yes        ZIdList
+:                         29         COLON                                declareStatement         Yes        COLON
+array                     29         ARRAY                                Dt              Yes        ARRAY     
+------                                                                    declareStatement         No         Dt
+[                         29         SQBO                                 Dt              Yes        SQBO      
+------                                                                    Rng             Yes        Sign      
+------                                                                    Dt              No         Rng       
+1                         29         NUM             1                    numOrId              Yes        NUM
+------                                                                    X               No         numOrId
+------                                                                    Rng             No         X         
+..                        29         RANGEOP                              X               Yes        RANGEOP   
+------                                                                    X               Yes        Sign      
+15                        29         NUM             15                   numOrId              Yes        NUM
+------                                                                    X               No         numOrId
+]                         29         SQBC                                 Dt              Yes        SQBC      
+of                        29         OF                                   Dt              Yes        OF        
+real                      29         REAL                                 arrayDataType              Yes        REAL
+------                                                                    Dt              No         arrayDataType
+;                         29         SEMICOLON                              declareStatement         Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    Mdef            No         statements
+declare                   30         DECLARE                              declareStatement         Yes        DECLARE
+------                                                                    Stmt            No         declareStatement
+k                         30         ID                                   idList             Yes        ID
+------                                                                    declareStatement         No         idList
+------                                                                    idList             Yes        ZIdList
+:                         30         COLON                                declareStatement         Yes        COLON
+integer                   30         INTEGER                              Dt              Yes        INTEGER   
+------                                                                    declareStatement         No         Dt
+;                         30         SEMICOLON                              declareStatement         Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+declare                   31         DECLARE                              declareStatement         Yes        DECLARE
+------                                                                    Stmt            No         declareStatement
+s                         31         ID                                   idList             Yes        ID
+------                                                                    declareStatement         No         idList
+------                                                                    idList             Yes        ZIdList
+:                         31         COLON                                declareStatement         Yes        COLON
+real                      31         REAL                                 Dt              Yes        REAL      
+------                                                                    declareStatement         No         Dt
+;                         31         SEMICOLON                              declareStatement         Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+get_value                 32         GET_VALUE                            Iostmt          Yes        GET_VALUE 
+------                                                                    Stmt            No         Iostmt    
+(                         32         BO                                   Iostmt          Yes        BO        
+k                         32         ID                                   Iostmt          Yes        ID        
+)                         32         BC                                   Iostmt          Yes        BC        
+;                         32         SEMICOLON                              Iostmt          Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+------                                                                    moduleUseStatement          Yes        Opt
+------                                                                    simpleStatement         No         moduleUseStatement
+use                       33         USE                                  moduleUseStatement          Yes        USE
+module                    33         MODULE                               moduleUseStatement          Yes        MODULE
+readArr                   33         ID                                   moduleUseStatement          Yes        ID
+with                      33         WITH                                 moduleUseStatement          Yes        WITH
+parameters                33         PARAMETERS                           moduleUseStatement          Yes        PARAMETERS
+------                                                                    parameterList           Yes        Sign
+------                                                                    moduleUseStatement          No         parameterList
+A                         33         ID                                   K               Yes        ID        
+------                                                                    parameterList           No         K
+------                                                                    K               Yes        Sq        
+,                         33         COMMA                                Zparal          Yes        COMMA     
+------                                                                    parameterList           No         Zparal
+------                                                                    Zparal          Yes        Sign      
+k                         33         ID                                   K               Yes        ID        
+------                                                                    Zparal          No         K         
+------                                                                    K               Yes        Sq        
+------                                                                    Zparal          Yes        Zparal    
+;                         33         SEMICOLON                              moduleUseStatement          Yes        SEMICOLON
+------                                                                    Stmt            No         simpleStatement
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+[                         34         SQBO                                 Opt             Yes        SQBO      
+------                                                                    moduleUseStatement          No         Opt
+s                         34         ID                                   idList             Yes        ID
+------                                                                    Opt             No         idList
+------                                                                    idList             Yes        ZIdList
+]                         34         SQBC                                 Opt             Yes        SQBC      
+:=                        34         ASSIGN_OP                             Opt             Yes        ASSIGN_OP
+------                                                                    simpleStatement         No         moduleUseStatement
+use                       34         USE                                  moduleUseStatement          Yes        USE
+module                    34         MODULE                               moduleUseStatement          Yes        MODULE
+arraySum                  34         ID                                   moduleUseStatement          Yes        ID
+with                      34         WITH                                 moduleUseStatement          Yes        WITH
+parameters                34         PARAMETERS                           moduleUseStatement          Yes        PARAMETERS
+------                                                                    parameterList           Yes        Sign
+------                                                                    moduleUseStatement          No         parameterList
+A                         34         ID                                   K               Yes        ID        
+------                                                                    parameterList           No         K
+------                                                                    K               Yes        Sq        
+,                         34         COMMA                                Zparal          Yes        COMMA     
+------                                                                    parameterList           No         Zparal
+------                                                                    Zparal          Yes        Sign      
+k                         34         ID                                   K               Yes        ID        
+------                                                                    Zparal          No         K         
+------                                                                    K               Yes        Sq        
+------                                                                    Zparal          Yes        Zparal    
+;                         34         SEMICOLON                              moduleUseStatement          Yes        SEMICOLON
+------                                                                    Stmt            No         simpleStatement
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+print                     35         PRINT                                Iostmt          Yes        PRINT     
+------                                                                    Stmt            No         Iostmt    
+(                         35         BO                                   Iostmt          Yes        BO        
+s                         35         ID                                   Valpr           Yes        ID        
+------                                                                    Iostmt          No         Valpr     
+------                                                                    Valpr           Yes        Prarr     
+)                         35         BC                                   Iostmt          Yes        BC        
+;                         35         SEMICOLON                              Iostmt          Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+------                                                                    statements           Yes        statements
+end                       36         END                                  Mdef            Yes        END       
+<<                        43         DEF                                  Mod             Yes        DEF       
+------                                                                    Oms             No         Mod       
+module                    43         MODULE                               Mod             Yes        MODULE    
+readArr                   43         ID                                   Mod             Yes        ID        
+>>                        43         ENDDEF                               Mod             Yes        ENDDEF    
+takes                     44         TAKES                                Mod             Yes        TAKES     
+input                     44         INPUT                                Mod             Yes        INPUT     
+[                         44         SQBO                                 Mod             Yes        SQBO      
+arr1                      44         ID                                   Ipl             Yes        ID        
+------                                                                    Mod             No         Ipl       
+:                         44         COLON                                Ipl             Yes        COLON     
+array                     44         ARRAY                                Dt              Yes        ARRAY     
+------                                                                    Ipl             No         Dt        
+[                         44         SQBO                                 Dt              Yes        SQBO      
+-                         44         MINUS                                Sign            Yes        MINUS     
+------                                                                    Rng             No         Sign      
+------                                                                    Dt              No         Rng       
+10                        44         NUM             10                   numOrId              Yes        NUM
+------                                                                    X               No         numOrId
+------                                                                    Rng             No         X         
+..                        44         RANGEOP                              X               Yes        RANGEOP   
+------                                                                    X               Yes        Sign      
+25                        44         NUM             25                   numOrId              Yes        NUM
+------                                                                    X               No         numOrId
+]                         44         SQBC                                 Dt              Yes        SQBC      
+of                        44         OF                                   Dt              Yes        OF        
+real                      44         REAL                                 arrayDataType              Yes        REAL
+------                                                                    Dt              No         arrayDataType
+,                         44         COMMA                                Zipl            Yes        COMMA     
+------                                                                    Ipl             No         Zipl      
+k                         44         ID                                   Zipl            Yes        ID        
+:                         44         COLON                                Zipl            Yes        COLON     
+integer                   44         INTEGER                              Dt              Yes        INTEGER   
+------                                                                    Zipl            No         Dt        
+------                                                                    Zipl            Yes        Zipl      
+]                         44         SQBC                                 Mod             Yes        SQBC      
+;                         44         SEMICOLON                              Mod             Yes        SEMICOLON
+------                                                                    Mod             Yes        returnList
+start                     45         START                                Mdef            Yes        START     
+------                                                                    Mod             No         Mdef      
+declare                   46         DECLARE                              declareStatement         Yes        DECLARE
+------                                                                    Stmt            No         declareStatement
+tempvar                   46         ID                                   idList             Yes        ID
+------                                                                    declareStatement         No         idList
+------                                                                    idList             Yes        ZIdList
+:                         46         COLON                                declareStatement         Yes        COLON
+real                      46         REAL                                 Dt              Yes        REAL      
+------                                                                    declareStatement         No         Dt
+;                         46         SEMICOLON                              declareStatement         Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    Mdef            No         statements
+declare                   47         DECLARE                              declareStatement         Yes        DECLARE
+------                                                                    Stmt            No         declareStatement
+i                         47         ID                                   idList             Yes        ID
+------                                                                    declareStatement         No         idList
+------                                                                    idList             Yes        ZIdList
+:                         47         COLON                                declareStatement         Yes        COLON
+integer                   47         INTEGER                              Dt              Yes        INTEGER   
+------                                                                    declareStatement         No         Dt
+;                         47         SEMICOLON                              declareStatement         Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+i                         49         ID                                   assignmentStatement           Yes        ID
+------                                                                    simpleStatement         No         assignmentStatement
+:=                        49         ASSIGN_OP                             leftValueId        Yes        ASSIGN_OP
+------                                                                    whichAssignment           No         leftValueId
+1                         49         NUM             1                    arithmeticFactor            Yes        NUM
+------                                                                    arithmeticTerm             No         arithmeticFactor
+------                                                                    arithmeticExpression            No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    booleanTerm          No         arithmeticExpression
+------                                                                    arithmeticExpression            Yes        ZArithmeticExpression
+------                                                                    arithmeticOrBooleanExpression          No         booleanTerm
+------                                                                    booleanTerm          Yes        ZBooleanTerm
+------                                                                    Expr            No         arithmeticOrBooleanExpression
+------                                                                    arithmeticOrBooleanExpression          Yes        ZArithmeticOrBooleanExpression
+------                                                                    leftValueId        No         Expr
+;                         49         SEMICOLON                              leftValueId        Yes        SEMICOLON
+------                                                                    assignmentStatement           No         whichAssignment
+------                                                                    Stmt            No         simpleStatement
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+while                     50         WHILE                                iterativeStatement           Yes        WHILE
+------                                                                    Stmt            No         iterativeStatement
+(                         50         BO                                   iterativeStatement           Yes        BO
+i                         50         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+------                                                                    arithmeticFactor            Yes        arrayBracket
+------                                                                    arithmeticExpression            No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    booleanTerm          No         arithmeticExpression
+------                                                                    arithmeticExpression            Yes        ZArithmeticExpression
+------                                                                    arithmeticOrBooleanExpression          No         booleanTerm
+<=                        50         LE                                   relationalOperator             Yes        LE
+------                                                                    ZBooleanTerm         No         relationalOperator
+------                                                                    booleanTerm          No         ZBooleanTerm
+k                         50         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+------                                                                    arithmeticFactor            Yes        arrayBracket
+------                                                                    arithmeticExpression            No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    ZBooleanTerm         No         arithmeticExpression
+------                                                                    arithmeticExpression            Yes        ZArithmeticExpression
+------                                                                    iterativeStatement           No         arithmeticOrBooleanExpression
+------                                                                    arithmeticOrBooleanExpression          Yes        ZArithmeticOrBooleanExpression
+)                         50         BC                                   iterativeStatement           Yes        BC
+start                     51         START                                iterativeStatement           Yes        START
+get_value                 52         GET_VALUE                            Iostmt          Yes        GET_VALUE 
+------                                                                    Stmt            No         Iostmt    
+(                         52         BO                                   Iostmt          Yes        BO        
+tempvar                   52         ID                                   Iostmt          Yes        ID        
+)                         52         BC                                   Iostmt          Yes        BC        
+;                         52         SEMICOLON                              Iostmt          Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    iterativeStatement           No         statements
+arr1                      53         ID                                   assignmentStatement           Yes        ID
+------                                                                    simpleStatement         No         assignmentStatement
+[                         53         SQBO                                 leftValueArray       Yes        SQBO
+------                                                                    whichAssignment           No         leftValueArray
+------                                                                    arrayIndex             Yes        Sign
+------                                                                    leftValueArray       No         arrayIndex
+i                         53         ID                                   arrayFactor         Yes        ID
+------                                                                    arrayTerm         No         arrayFactor
+------                                                                    arrayExpression          No         arrayTerm
+------                                                                    arrayTerm         Yes        ZArrayTerm
+------                                                                    arrayIndex             No         arrayExpression
+------                                                                    arrayExpression          Yes        ZArrayExpression
+]                         53         SQBC                                 leftValueArray       Yes        SQBC
+:=                        53         ASSIGN_OP                             leftValueArray       Yes        ASSIGN_OP
+tempvar                   53         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+------                                                                    arithmeticFactor            Yes        arrayBracket
+------                                                                    arithmeticExpression            No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    booleanTerm          No         arithmeticExpression
+------                                                                    arithmeticExpression            Yes        ZArithmeticExpression
+------                                                                    arithmeticOrBooleanExpression          No         booleanTerm
+------                                                                    booleanTerm          Yes        ZBooleanTerm
+------                                                                    Expr            No         arithmeticOrBooleanExpression
+------                                                                    arithmeticOrBooleanExpression          Yes        ZArithmeticOrBooleanExpression
+------                                                                    leftValueArray       No         Expr
+;                         53         SEMICOLON                              leftValueArray       Yes        SEMICOLON
+------                                                                    assignmentStatement           No         whichAssignment
+------                                                                    Stmt            No         simpleStatement
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+declare                   54         DECLARE                              declareStatement         Yes        DECLARE
+------                                                                    Stmt            No         declareStatement
+B                         54         ID                                   idList             Yes        ID
+------                                                                    declareStatement         No         idList
+------                                                                    idList             Yes        ZIdList
+:                         54         COLON                                declareStatement         Yes        COLON
+array                     54         ARRAY                                Dt              Yes        ARRAY     
+------                                                                    declareStatement         No         Dt
+[                         54         SQBO                                 Dt              Yes        SQBO      
+-                         54         MINUS                                Sign            Yes        MINUS     
+------                                                                    Rng             No         Sign      
+------                                                                    Dt              No         Rng       
+p                         54         ID                                   numOrId              Yes        ID
+------                                                                    X               No         numOrId
+------                                                                    Rng             No         X         
+..                        54         RANGEOP                              X               Yes        RANGEOP   
++                         54         PLUS                                 Sign            Yes        PLUS      
+------                                                                    X               No         Sign      
+q                         54         ID                                   numOrId              Yes        ID
+------                                                                    X               No         numOrId
+]                         54         SQBC                                 Dt              Yes        SQBC      
+of                        54         OF                                   Dt              Yes        OF        
+boolean                   54         BOOLEAN                              arrayDataType              Yes        BOOLEAN
+------                                                                    Dt              No         arrayDataType
+;                         54         SEMICOLON                              declareStatement         Yes        SEMICOLON
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+tempvar                   55         ID                                   assignmentStatement           Yes        ID
+------                                                                    simpleStatement         No         assignmentStatement
+:=                        55         ASSIGN_OP                             leftValueId        Yes        ASSIGN_OP
+------                                                                    whichAssignment           No         leftValueId
+-                         55         MINUS                                unaryOperator             Yes        MINUS
+------                                                                    unaryExpression               No         unaryOperator
+------                                                                    Expr            No         unaryExpression
+(                         55         BO                                   unaryTerm           Yes        BO
+------                                                                    unaryExpression               No         unaryTerm
+tempvar                   55         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+------                                                                    arithmeticFactor            Yes        arrayBracket
+------                                                                    arithmeticExpression            No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    unaryTerm           No         arithmeticExpression
++                         55         PLUS                                 addSubOp             Yes        PLUS
+------                                                                    ZArithmeticExpression           No         addSubOp
+------                                                                    arithmeticExpression            No         ZArithmeticExpression
+B                         55         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+[                         55         SQBO                                 arrayBracket          Yes        SQBO
+------                                                                    arithmeticFactor            No         arrayBracket
+------                                                                    arrayIndex             Yes        Sign
+------                                                                    arrayBracket          No         arrayIndex
+a                         55         ID                                   arrayFactor         Yes        ID
+------                                                                    arrayTerm         No         arrayFactor
+------                                                                    arrayExpression          No         arrayTerm
+------                                                                    arrayTerm         Yes        ZArrayTerm
+------                                                                    arrayIndex             No         arrayExpression
++                         55         PLUS                                 addSubOp             Yes        PLUS
+------                                                                    ZArrayExpression         No         addSubOp
+------                                                                    arrayExpression          No         ZArrayExpression
+b                         55         ID                                   arrayFactor         Yes        ID
+------                                                                    arrayTerm         No         arrayFactor
+------                                                                    ZArrayExpression         No         arrayTerm
+*                         55         MUL                                  mulDivOp             Yes        MUL
+------                                                                    ZArrayTerm         No         mulDivOp
+------                                                                    arrayTerm         No         ZArrayTerm
+c                         55         ID                                   arrayFactor         Yes        ID
+------                                                                    ZArrayTerm         No         arrayFactor
+------                                                                    ZArrayTerm         Yes        ZArrayTerm
+------                                                                    ZArrayExpression         Yes        ZArrayExpression
+]                         55         SQBC                                 arrayBracket          Yes        SQBC
+------                                                                    ZArithmeticExpression           No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
++                         55         PLUS                                 addSubOp             Yes        PLUS
+------                                                                    ZArithmeticExpression           No         addSubOp
+------                                                                    ZArithmeticExpression           No         ZArithmeticExpression
+A                         55         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+[                         55         SQBO                                 arrayBracket          Yes        SQBO
+------                                                                    arithmeticFactor            No         arrayBracket
++                         55         PLUS                                 Sign            Yes        PLUS      
+------                                                                    arrayIndex             No         Sign
+------                                                                    arrayBracket          No         arrayIndex
+5                         55         NUM             5                    arrayFactor         Yes        NUM
+------                                                                    arrayTerm         No         arrayFactor
+------                                                                    arrayExpression          No         arrayTerm
+------                                                                    arrayTerm         Yes        ZArrayTerm
+------                                                                    arrayIndex             No         arrayExpression
+------                                                                    arrayExpression          Yes        ZArrayExpression
+]                         55         SQBC                                 arrayBracket          Yes        SQBC
+------                                                                    ZArithmeticExpression           No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+-                         55         MINUS                                addSubOp             Yes        MINUS
+------                                                                    ZArithmeticExpression           No         addSubOp
+------                                                                    ZArithmeticExpression           No         ZArithmeticExpression
+A                         55         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+[                         55         SQBO                                 arrayBracket          Yes        SQBO
+------                                                                    arithmeticFactor            No         arrayBracket
+-                         55         MINUS                                Sign            Yes        MINUS     
+------                                                                    arrayIndex             No         Sign
+------                                                                    arrayBracket          No         arrayIndex
+10                        55         NUM             10                   arrayFactor         Yes        NUM
+------                                                                    arrayTerm         No         arrayFactor
+------                                                                    arrayExpression          No         arrayTerm
+------                                                                    arrayTerm         Yes        ZArrayTerm
+------                                                                    arrayIndex             No         arrayExpression
+------                                                                    arrayExpression          Yes        ZArrayExpression
+]                         55         SQBC                                 arrayBracket          Yes        SQBC
+------                                                                    ZArithmeticExpression           No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    ZArithmeticExpression           Yes        ZArithmeticExpression
+)                         55         BC                                   unaryTerm           Yes        BC
+------                                                                    leftValueId        No         Expr
+;                         55         SEMICOLON                              leftValueId        Yes        SEMICOLON
+------                                                                    assignmentStatement           No         whichAssignment
+------                                                                    Stmt            No         simpleStatement
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+B                         56         ID                                   assignmentStatement           Yes        ID
+------                                                                    simpleStatement         No         assignmentStatement
+[                         56         SQBO                                 leftValueArray       Yes        SQBO
+------                                                                    whichAssignment           No         leftValueArray
+------                                                                    arrayIndex             Yes        Sign
+------                                                                    leftValueArray       No         arrayIndex
+k                         56         ID                                   arrayFactor         Yes        ID
+------                                                                    arrayTerm         No         arrayFactor
+------                                                                    arrayExpression          No         arrayTerm
+------                                                                    arrayTerm         Yes        ZArrayTerm
+------                                                                    arrayIndex             No         arrayExpression
+------                                                                    arrayExpression          Yes        ZArrayExpression
+]                         56         SQBC                                 leftValueArray       Yes        SQBC
+:=                        56         ASSIGN_OP                             leftValueArray       Yes        ASSIGN_OP
+-                         56         MINUS                                unaryOperator             Yes        MINUS
+------                                                                    unaryExpression               No         unaryOperator
+------                                                                    Expr            No         unaryExpression
+10                        56         NUM             10                   numOrId              Yes        NUM
+------                                                                    unaryTerm           No         numOrId
+------                                                                    unaryExpression               No         unaryTerm
+------                                                                    leftValueArray       No         Expr
+;                         56         SEMICOLON                              leftValueArray       Yes        SEMICOLON
+------                                                                    assignmentStatement           No         whichAssignment
+------                                                                    Stmt            No         simpleStatement
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+i                         57         ID                                   assignmentStatement           Yes        ID
+------                                                                    simpleStatement         No         assignmentStatement
+:=                        57         ASSIGN_OP                             leftValueId        Yes        ASSIGN_OP
+------                                                                    whichAssignment           No         leftValueId
+i                         57         ID                                   arithmeticFactor            Yes        ID
+------                                                                    arithmeticTerm             No         arithmeticFactor
+------                                                                    arithmeticFactor            Yes        arrayBracket
+------                                                                    arithmeticExpression            No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    booleanTerm          No         arithmeticExpression
++                         57         PLUS                                 addSubOp             Yes        PLUS
+------                                                                    ZArithmeticExpression           No         addSubOp
+------                                                                    arithmeticExpression            No         ZArithmeticExpression
+1                         57         NUM             1                    arithmeticFactor            Yes        NUM
+------                                                                    arithmeticTerm             No         arithmeticFactor
+------                                                                    ZArithmeticExpression           No         arithmeticTerm
+------                                                                    arithmeticTerm             Yes        ZArithmeticTerm
+------                                                                    ZArithmeticExpression           Yes        ZArithmeticExpression
+------                                                                    arithmeticOrBooleanExpression          No         booleanTerm
+------                                                                    booleanTerm          Yes        ZBooleanTerm
+------                                                                    Expr            No         arithmeticOrBooleanExpression
+------                                                                    arithmeticOrBooleanExpression          Yes        ZArithmeticOrBooleanExpression
+------                                                                    leftValueId        No         Expr
+;                         57         SEMICOLON                              leftValueId        Yes        SEMICOLON
+------                                                                    assignmentStatement           No         whichAssignment
+------                                                                    Stmt            No         simpleStatement
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+------                                                                    statements           Yes        statements
+end                       59         END                                  iterativeStatement           Yes        END
+------                                                                    statements           No         Stmt
+------                                                                    statements           No         statements
+------                                                                    statements           Yes        statements
+end                       60         END                                  Mdef            Yes        END       
+------                                                                    Pro             No         Oms       
+------                                                                    Oms             Yes        Oms       

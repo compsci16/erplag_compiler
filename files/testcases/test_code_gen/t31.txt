@@ -1,0 +1,14 @@
+<<<driver program>>>
+start
+declare a: integer;
+declare Arr: array[0..3] of integer;
+
+for (i in -1..-3)
+start
+    declare a: integer;
+    declare x: integer;
+    declare y: integer;
+    print(i);
+end
+
+end

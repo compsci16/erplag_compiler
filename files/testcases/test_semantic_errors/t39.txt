@@ -1,0 +1,7 @@
+
+<<<driver program>>>
+start
+    declare a,b:integer;
+    declare arr:array[5..9] of real;
+    a := arr[7]+b;
+end

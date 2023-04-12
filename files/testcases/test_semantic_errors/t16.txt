@@ -1,0 +1,25 @@
+** module called with correct return - MEDIUM **
+declare module mod1;
+<<<driver program>>>
+start
+    declare a: integer;
+    declare p: array[-5..-10] of integer;
+    [c,d,e] := use module mod1 with parameters a,p; ** wrong call as undeclared returns **
+    use module mod1 with parameters a,p; ** correct call as undeclared returns **
+    declare c: integer;
+    declare d: boolean;
+    declare e: real;
+    [c,d,e] := use module mod1 with parameters a,p; ** now correct call **
+    [c,d,e] := use module mod1 with parameters k,p; **  incorrect call **
+    [c,d,p] := use module mod1 with parameters k,p; **  incorrect call **
+end
+
+
+<<module mod1>>
+takes input [K: integer, list: array[-5..-10] of integer];
+returns [a: integer, b: boolean, c: real];
+start
+end
+
+
+

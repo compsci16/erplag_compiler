@@ -1,0 +1,22 @@
+** module called with incorrect type of parameters (array included) - MEDIUM **
+declare module mod1;
+<<<driver program>>>
+start
+    use module mod1 with parameters a,b; ** undeclared call **
+    declare c: real;
+    declare list: array[1..20] of integer;
+    declare list: array[1..20] of integer;
+    declare list: array[1..20] of integer;
+    use module mod1 with parameters list,list;
+    ** now declare with right types and call **
+    declare a: boolean;
+    declare b: integer;
+    use module mod1 with parameters a, b;
+end
+
+
+<<module mod1>>
+takes input [k: boolean, r: integer];
+start
+
+end
