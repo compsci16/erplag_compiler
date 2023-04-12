@@ -9,9 +9,9 @@
 #include "compiler/semantic_analyzer/semantic_analyzer.h"
 #include "compiler/code_generator/code_generator.h"
 
-char *state_to_token_path = "files/lexer_files/mini_id_to_token_type.txt";
-char *edges_path = "files/lexer_files/mini_edges.txt";
-char *ac_retract_path = "files/lexer_files/mini_accept_retract_other.txt";
+char *state_to_token_path = "files/lexer_files/id_to_token_type.txt";
+char *edges_path = "files/lexer_files/edges.txt";
+char *ac_retract_path = "files/lexer_files/accept_retract_other.txt";
 char *state_to_error = "files/lexer_files/state_to_error.txt";
 
 static void driver(char *src, char *asm_file);

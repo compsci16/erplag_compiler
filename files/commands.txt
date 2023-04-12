@@ -1,0 +1,30 @@
+find . \( -path './.git' -o -path './cmake-build-debug' \) -prune -o -type f -exec sh -c 'mv -- "{}" .' \;
+
+
+find . -type f -not -path './.git/*' -not -path './.idea/*' -not -path './cmake-debug-build/*' -exec sh -c 'LC_ALL=C LANG=C sed -i.bak "s|#include \"\(.*\)/\([^/]*\)\"|#include \"\2\"|g" "$0"' {} \;
+find . -type f -name "*.bak" -exec rm {} +
+
+Make file:
+CC = gcc
+CFLAGS = -Wall
+
+SRC = $(wildcard *.c)
+OBJ = $(SRC:.c=.o)
+DEP = $(SRC:.c=.d)
+
+TARGET = compiler
+
+.PHONY: all clean
+
+all: $(TARGET) clean
+
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
+
+-include $(DEP)
+
+clean:
+	rm -f $(OBJ) $(DEP)
