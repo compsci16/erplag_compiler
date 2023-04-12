@@ -327,8 +327,10 @@ static void handle_code_generation_request(char *src, char *asm_file) {
         perform_semantic_analysis(program_node_root, program_node_root->global_symbol_table);
         if (!GOT_SEMANTIC_ERROR_GLOBAL) {
             generate_code_from(program_node_root, asm_file);
+        } else {
+            puts("Failed to generate code due to Semantic Errors");
         }
     } else {
-        puts("Failed to construct AST due to Syntax Errors");
+        puts("Failed to construct AST/AssemblyCode due to Syntax Errors");
     }
 }
