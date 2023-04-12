@@ -1007,11 +1007,6 @@ static void check_bounds_from_r8(RangeInInt range_in_int) {
 static int get_offset_from_node(ASTNode *ast_node) {
     switch (ast_node->tag) {
         case NODE_ARRAY_VARIABLE: {
-            ArrayVariableNode *array_variable_node = (ArrayVariableNode *) ast_node;
-            SymbolTableEntry *symbol_table_entry = array_variable_node->symbol_table_entry;
-            if (symbol_table_entry->type_descriptor.array_type.is_dynamic) {
-
-            }
             break;
         }
         case NODE_BOOLEAN_LITERAL:
@@ -1039,7 +1034,6 @@ static int get_offset_from_node(ASTNode *ast_node) {
             break;
         case NODE_SWITCH: {
 
-
             break;
         }
         case NODE_VARIABLE_LIST:
@@ -1051,7 +1045,6 @@ static int get_offset_from_node(ASTNode *ast_node) {
         case NODE_ARRAY: {
             ArrayNode *array_node = (ArrayNode *) ast_node;
             return array_node->offset;
-
         }
         case NODE_BINARY_OPERATOR: {
             return ((BinaryOperatorNode *) ast_node)->result_offset;
