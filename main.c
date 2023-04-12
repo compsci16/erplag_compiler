@@ -4,13 +4,13 @@
 #include "lexer_constructor.h"
 #include "core/ast/ast.h"
 
-char *state_to_token_path = "files/lexer_files/id_to_token_type.txt";
-char *edges_path = "files/lexer_files/edges.txt";
-char *ac_retract_path = "files/lexer_files/accept_retract_other.txt";
+char *state_to_token_path = "files/lexer_files/mini_id_to_token_type.txt";
+char *edges_path = "files/lexer_files/mini_edges.txt";
+char *ac_retract_path = "files/lexer_files/mini_accept_retract_other.txt";
 char *state_to_error = "files/lexer_files/state_to_error.txt";
 
 int main() {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     char *src = "/Users/wint/code/compiler/files/testcases/semanicAnalysis_testcases/t1.txt";
     int buffer_size = 1024;
     Parser *parser = get_initialized_parser(g);

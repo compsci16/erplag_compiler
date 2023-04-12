@@ -9,9 +9,9 @@
 #include "compiler/semantic_analyzer/semantic_analyzer.h"
 #include "compiler/code_generator/code_generator.h"
 
-char *state_to_token_path = "files/lexer_files/id_to_token_type.txt";
-char *edges_path = "files/lexer_files/edges.txt";
-char *ac_retract_path = "files/lexer_files/accept_retract_other.txt";
+char *state_to_token_path = "files/lexer_files/mini_id_to_token_type.txt";
+char *edges_path = "files/lexer_files/mini_edges.txt";
+char *ac_retract_path = "files/lexer_files/mini_accept_retract_other.txt";
 char *state_to_error = "files/lexer_files/state_to_error.txt";
 
 static void driver(char *src, char *asm_file);
@@ -125,7 +125,7 @@ static void print_menu() {
 }
 
 static void handle_lexer_request(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -138,7 +138,7 @@ static void handle_lexer_request(char *src) {
 }
 
 static void handle_parser_request(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -152,7 +152,7 @@ static void handle_parser_request(char *src) {
 }
 
 static void handle_ast_request(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -174,7 +174,7 @@ static void handle_ast_request(char *src) {
 }
 
 static void handle_ast_compression_info_request(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     Parser *parser = get_initialized_parser(g);
     int buffer_size = 1024;
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
@@ -197,7 +197,7 @@ static void handle_ast_compression_info_request(char *src) {
 }
 
 static void handle_print_symbol_table(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -219,7 +219,7 @@ static void handle_print_symbol_table(char *src) {
 }
 
 static void handle_activation_record_printing(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -248,7 +248,7 @@ static void handle_activation_record_printing(char *src) {
 }
 
 static void handle_array_printing(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -272,7 +272,7 @@ static void handle_array_printing(char *src) {
 
 static void handle_error_reporting_and_time_request(char *src) {
     clock_t begin = clock();
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -298,7 +298,7 @@ static void handle_error_reporting_and_time_request(char *src) {
 }
 
 static void handle_code_generation_request(char *src, char *asm_file) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,

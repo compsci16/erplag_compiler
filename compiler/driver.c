@@ -18,10 +18,10 @@
 #include "core/parse_tree/parse_tree.h"
 #include "semantic_analyzer/semantic_analyzer.h"
 
-char *state_to_token_path = "files/lexer_files/id_to_token_type.txt";
-char *edges_path = "files/lexer_files/edges.txt";
-char *ac_retract_path = "files/lexer_files/accept_retract_other.txt";
-char *productions_path = "files/grammar_files/productions.txt";
+char *state_to_token_path = "files/lexer_files/mini_id_to_token_type.txt";
+char *edges_path = "files/lexer_files/mini_edges.txt";
+char *ac_retract_path = "files/lexer_files/mini_accept_retract_other.txt";
+char *productions_path = "files/grammar_files/mini_productions.txt";
 char *state_to_error = "files/lexer_files/state_to_error.txt";
 
 static void handle_remove_comments_request(char *path);
@@ -114,7 +114,7 @@ int main(int argc, char **argv) {
 
 static void handle_lexer_request(char *src) {
 
-    const Grammar *grammar = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *grammar = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     set_first_sets_for(grammar);
     set_follow_sets_for(grammar);
     int buffer_size = 1024;
@@ -130,7 +130,7 @@ static void handle_lexer_request(char *src) {
 }
 
 static void handle_parser_request(char *src) {
-    const Grammar *grammar = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *grammar = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     set_first_sets_for(grammar);
     set_follow_sets_for(grammar);
     int buffer_size = 1024;
@@ -151,7 +151,7 @@ static void handle_parser_request(char *src) {
 }
 
 static void handle_compression_ratio(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     set_first_sets_for(g);
     set_follow_sets_for(g);
     Parser *parser = get_initialized_parser(g);
@@ -177,7 +177,7 @@ static void handle_compression_ratio(char *src) {
 }
 
 static void handle_ast_print(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     set_first_sets_for(g);
     set_follow_sets_for(g);
     Parser *parser = get_initialized_parser(g);
@@ -198,7 +198,7 @@ static void handle_ast_print(char *src) {
 }
 
 static void handle_symbol_table_print(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     set_first_sets_for(g);
     set_follow_sets_for(g);
     Parser *parser = get_initialized_parser(g);
@@ -220,7 +220,7 @@ static void handle_symbol_table_print(char *src) {
 }
 
 static void handle_total_memory_requirement(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     set_first_sets_for(g);
     set_follow_sets_for(g);
     Parser *parser = get_initialized_parser(g);
@@ -246,7 +246,7 @@ static void handle_total_memory_requirement(char *src) {
 }
 
 static void handle_array_variable_print(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     set_first_sets_for(g);
     set_follow_sets_for(g);
     Parser *parser = get_initialized_parser(g);
@@ -268,7 +268,7 @@ static void handle_array_variable_print(char *src) {
 }
 
 static void handle_syntax_and_semantic_error(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
     set_first_sets_for(g);
     set_follow_sets_for(g);
     Parser *parser = get_initialized_parser(g);

@@ -13,7 +13,6 @@ error set_follow_sets_for(Grammar *g) {
     int DOLLAR_SYMBOL = DOLLAR;
     HashSet **start_set = get_from_hashmap(follow_map, &START_SYMBOL);
     add_to_hashset(*start_set, &DOLLAR_SYMBOL);
-    // Assume epsilon at last place in terminals.txt
     int epsilon = EPSILON;
 
     bool follow_sets_are_still_changing = true;
