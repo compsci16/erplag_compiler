@@ -43,19 +43,6 @@ int main(int argc, char **argv) {
     }
     char *src = argv[1];
     char *asm_out = argv[2];
-//    ProgramNode *program_node_root = parse_tree->got_syntax_error ? NULL : parse_tree->program_node;
-//    if (program_node_root != NULL) {
-//        construct_symbol_table(program_node_root);
-//        print_symbol_table_as_required(program_node_root->global_symbol_table);
-//        perform_semantic_analysis(program_node_root, program_node_root->global_symbol_table);
-//        if (!GOT_SEMANTIC_ERROR_GLOBAL) {
-//            generate_code_from(program_node_root);
-//        }
-//
-//    } else {
-//        puts("Failed to construct AST due to Syntax Errors");
-//    }
-    // run_lexer_independently_on_and_print_to(lexer, stdout);
     driver(src, asm_out);
     return 0;
 }
