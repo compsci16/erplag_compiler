@@ -1,4 +1,4 @@
-/Users/wint/CLionProjects/erplag_compiler/cmake-build-debug/CMakeFiles/main2.c.dir
 /Users/wint/CLionProjects/erplag_compiler/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /Users/wint/CLionProjects/erplag_compiler/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/wint/CLionProjects/erplag_compiler/cmake-build-debug/CMakeFiles/stage1exe.dir
+/Users/wint/CLionProjects/erplag_compiler/cmake-build-debug/CMakeFiles/exec1.dir
+/Users/wint/CLionProjects/erplag_compiler/cmake-build-debug/CMakeFiles/main2.c.dir

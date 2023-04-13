@@ -65,7 +65,8 @@ typedef struct TypeDescriptor {
             struct TypeDescriptor *return_types;
             size_t num_parameters;
             struct TypeDescriptor *parameter_types;
-            SymbolTable *symbol_table;
+            SymbolTable *module_symbol_table;
+            SymbolTable *function_entry_symbol_table;
         } function_type;
     };
 } TypeDescriptor;

@@ -125,7 +125,7 @@ static void print_menu() {
 }
 
 static void handle_lexer_request(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -138,7 +138,7 @@ static void handle_lexer_request(char *src) {
 }
 
 static void handle_parser_request(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -152,7 +152,7 @@ static void handle_parser_request(char *src) {
 }
 
 static void handle_ast_request(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -174,7 +174,7 @@ static void handle_ast_request(char *src) {
 }
 
 static void handle_ast_compression_info_request(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
     Parser *parser = get_initialized_parser(g);
     int buffer_size = 1024;
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
@@ -197,7 +197,7 @@ static void handle_ast_compression_info_request(char *src) {
 }
 
 static void handle_print_symbol_table(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -219,7 +219,7 @@ static void handle_print_symbol_table(char *src) {
 }
 
 static void handle_activation_record_printing(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -238,8 +238,11 @@ static void handle_activation_record_printing(char *src) {
         for (int i = 0; i < global_symbol_table->capacity; ++i) {
             SymbolTableEntry *symbol_table_entry = global_symbol_table->records[i];
             if (symbol_table_entry == NULL) continue;
-            SymbolTable *module_symbol_table = symbol_table_entry->type_descriptor.function_type.symbol_table;
-            printf("%s:%d\n", symbol_table_entry->name, module_symbol_table->total_data_size);
+            SymbolTable *module_symbol_table = symbol_table_entry->type_descriptor.function_type.module_symbol_table;
+            SymbolTable *function_entry_symbol_table =
+                    symbol_table_entry->type_descriptor.function_type.function_entry_symbol_table;
+            printf("%s:%d\n", symbol_table_entry->name, module_symbol_table->total_data_size +
+                                                        function_entry_symbol_table->total_data_size);
         }
     } else {
         puts("Failed to construct AST due to Syntax Errors");
@@ -248,7 +251,7 @@ static void handle_activation_record_printing(char *src) {
 }
 
 static void handle_array_printing(char *src) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -272,7 +275,7 @@ static void handle_array_printing(char *src) {
 
 static void handle_error_reporting_and_time_request(char *src) {
     clock_t begin = clock();
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,
@@ -298,7 +301,7 @@ static void handle_error_reporting_and_time_request(char *src) {
 }
 
 static void handle_code_generation_request(char *src, char *asm_file) {
-    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/mini_productions.txt");
+    const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
     Parser *parser = get_initialized_parser(g);
     Lexer *lexer = get_initialized_lexer_for_parser(parser, src, state_to_token_path, edges_path,
                                                     ac_retract_path,

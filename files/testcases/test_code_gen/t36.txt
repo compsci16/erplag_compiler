@@ -3,7 +3,7 @@
 **indexing is using variable identifiers, numbers and expressions**
 **Single driver module with two levels of nesting **
 **Note: Implement get_value(A) using type information of A. Your code template should first inform user of the size, range indices and type of data and read accordingly to populate the memory locations allocated for elements of A**
-   
+
 <<<driver program>>>
 start
 	declare x, y, z, k:integer;
@@ -18,13 +18,13 @@ start
 	declare C: array[-b..+d] of integer; 			 **dynamic subrange involves two signed identifiers**
 	get_value(x);
 	get_value(y);
-	get_value(A);						**At compile time, the offset of each element of A is computed** 
+	get_value(A);						**At compile time, the offset of each element of A is computed**
 	print(A);
-	get_value(B);						**At run time, the offset of each element of B is computed** 
+	get_value(B);						**At run time, the offset of each element of B is computed**
 	print(B);
-	get_value(C);						**At run time, the offset of each element of C is computed** 
+	get_value(C);						**At run time, the offset of each element of C is computed**
 	print(C);
-	y:= A[5*2+a]+B[12*b-d-3*a];				**dynamic bound checking required** 
+	y:= A[5*2+a]+B[12*b-d-3*a];				**dynamic bound checking required**
 	z:= -(x+y*C[0]-C[5*a-7]);				**dynamic bound checking required**
 	print(y);
 	print(z);
@@ -33,12 +33,12 @@ start
               declare A:integer;
 	      A:=12;
               z:= A+B[k-12];  					**dynamic bound checking at every loop, nonlocal z changes**
-    	      y:= z-C[k*2-25+a*2];				**dynamic bound checking at every loop, nonlocal y changes**	
+    	      y:= z-C[k*2-25+a*2];				**dynamic bound checking at every loop, nonlocal y changes**
               print(k);
 	      print(z);
-              print(y);	
+              print(y);
         end
-	print(y);	
+	print(y);
 	print(z);
 	print(A);
 
@@ -49,12 +49,12 @@ end
 Read a, b, d, x and y as 2,1,4, 3 and 5 respectively.
 Read array A as 4, -7, 2, 11, -19, 20
 Read array B as 23, 47, -6, 8, 101, 2
-Read array C as 66, 21, -98, 3, -4, 0 
+Read array C as 66, 21, -98, 3, -4, 0
 
 and print values of A - i.e. all elements of A one after the other in each line
 
 Repeat for 6 times for executing for loop
-      
+
 
 On the console your output and input messages should appear in new line for each print as shown below
 
@@ -80,7 +80,7 @@ Input: Enter 6 array elements of integer type for range 10 to 15	[Array A: readi
 Output:  4 -7 2 11 -19 20						[Array A: printed all elements in one line separated by blanks]
 
 Input: Enter 6 array elements of integer type for range -3 to 2		[Array B: reading one element at each line]
-23 
+23
 47
 -6
 8
@@ -98,7 +98,7 @@ Input: Enter 6 array elements of integer type for range -1 to 4		[Array C: readi
 0
 
 Output:  66 21 -98 3 -4 0						[Array C: printed all elements in one line separated by blanks]
-							
+
 Output: 4						[value of y computed at line 30]
 Output: 91						[value of z computed at line 31]
 							[Loop below]
@@ -112,13 +112,13 @@ Output: 12						[iteration 3 with k = 12, successful - no run time array bound e
 Output: 20
 Output: 24
 Output: 13						[iteration 4 with k = 13]
-Output: 113						[Dynamic bound checking done and error reported for access to C[5]] 
+Output: 113						[Dynamic bound checking done and error reported for access to C[5]]
 Output: 24						[only previously stored value available]
 Output: 14						[iteration 5 with k = 14]
-Output: 14						[Dynamic bound checking done and error reported for access to C[7]] 
+Output: 14						[Dynamic bound checking done and error reported for access to C[7]]
 Output: 24						[only previously stored value available]
 Output: 15						[iteration 6 with k = 15]
-Output: 14						[Dynamic bound checking done and error reported for access to B[3] and C[9]] 
+Output: 14						[Dynamic bound checking done and error reported for access to B[3] and C[9]]
 Output: 24						[only previously stored value available for y and z both]
 							[Loop ends]
 Output: 14

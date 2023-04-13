@@ -96,7 +96,7 @@ void print_total_memory_requirement(SymbolTable *global_symbol_table) {
         SymbolTableEntry *record = global_symbol_table->records[i];
         if (record == NULL) continue;
         char *mod_name = record->name;
-        SymbolTable *function_symbol_table = record->type_descriptor.function_type.symbol_table;
+        SymbolTable *function_symbol_table = record->type_descriptor.function_type.module_symbol_table;
         int total_size = function_symbol_table->total_data_size;
         printf("%-10s%-10d\n", mod_name, total_size);
     }
@@ -125,9 +125,9 @@ void print_symbol_table_as_required(SymbolTable *global_symbol_table) {
         SymbolTableEntry *record = global_symbol_table->records[i];
         if (record == NULL) continue;
         char *mod_name = record->name;
-        int s = record->type_descriptor.function_type.symbol_table->start_line;
-        int e = record->type_descriptor.function_type.symbol_table->end_line;
-        print_symbol_table_as_required_helper(record->type_descriptor.function_type.symbol_table,
+        int s = record->type_descriptor.function_type.module_symbol_table->start_line;
+        int e = record->type_descriptor.function_type.module_symbol_table->end_line;
+        print_symbol_table_as_required_helper(record->type_descriptor.function_type.module_symbol_table,
                                               0, s, e, mod_name);
     }
 }
@@ -215,9 +215,9 @@ void print_array_variable_entry(SymbolTable *global_symbol_table) {
         SymbolTableEntry *record = global_symbol_table->records[i];
         if (record == NULL) continue;
         char *mod_name = record->name;
-        int s = record->type_descriptor.function_type.symbol_table->start_line;
-        int e = record->type_descriptor.function_type.symbol_table->end_line;
-        print_symbol_table_as_required_helper(record->type_descriptor.function_type.symbol_table,
+        int s = record->type_descriptor.function_type.module_symbol_table->start_line;
+        int e = record->type_descriptor.function_type.module_symbol_table->end_line;
+        print_symbol_table_as_required_helper(record->type_descriptor.function_type.module_symbol_table,
                                               0, s, e, mod_name);
     }
 

@@ -570,7 +570,7 @@ static FunctionCallType get_function_call_type(ModuleUseStatementNode *module_us
         return UNDEFINED_AND_DECLARED_CALL;
     }
 
-    if (callees_symbol_table_entry_in_global->type_descriptor.function_type.symbol_table == current) {
+    if (callees_symbol_table_entry_in_global->type_descriptor.function_type.module_symbol_table == current) {
         return RECURSIVE_CALL;
     }
     int caller_line_number = module_use_statement_node->module_name->id_token->line_number;

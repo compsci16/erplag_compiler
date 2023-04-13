@@ -136,6 +136,8 @@ static void construct_symbol_table_helper(ASTNode *node, SymbolTable *parent) {
             function_entry_symbol_table->parent = parent;
             ArrayList *input_parameter_list = module_node->input_parameter_list_node->variable_nodes_list;
             ArrayList *output_parameter_list = module_node->output_parameter_list_node->variable_nodes_list;
+            module_symbol_table_entry->type_descriptor.function_type.function_entry_symbol_table =
+                    function_entry_symbol_table;
 
             for (size_t i = 0; i < module_symbol_table_entry->type_descriptor.function_type.num_parameters; ++i) {
                 ASTNode **p_ast_node = get_element_at_index_arraylist(input_parameter_list, i);
@@ -663,7 +665,7 @@ static void populate_module_symbol_table_entry(ModuleNode *module_node, SymbolTa
     module_symbol_table->start_line = module_node->start_line;
     module_symbol_table->end_line = module_node->end_line;
     module_node->symbol_table_entry = symbol_table_entry;
-    type_descriptor.function_type.symbol_table = module_symbol_table;
+    type_descriptor.function_type.module_symbol_table = module_symbol_table;
     module_node->symbol_table_entry->type_descriptor = type_descriptor;
     module_node->function_entry_symbol_table = module_symbol_table;
     module_node->symbol_table_entry = symbol_table_entry;

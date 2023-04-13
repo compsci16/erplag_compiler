@@ -56,12 +56,41 @@ set(ALL_DATA_STRUCTURES ${ARRAY_LIST} ${HASH_MAP} ${HASH_SET} ${LINKED_LIST} ${S
 #add_executable(parser_tester ${ALL_LEXER} ${ALL_PARSER} tests/parser_tester.c)
 #add_executable(compiler ${ALL_LEXER} ${ALL_PARSER} ${UTILITY} ${ALL_DATA_STRUCTURES} compiler/main.c compiler/symbol_table/symbol_table.c compiler/symbol_table/symbol_table.h)
 #add_executable(lexer_app ${ALL_LEXER} ${ALL_PARSER} ${UTILITY} ${ALL_DATA_STRUCTURES} compiler/lex_main.c compiler/symbol_table/symbol_table.c compiler/symbol_table/symbol_table.h)
-add_executable(stage1exe ${ALL_PARSER} ${UTILITY}
-        ${ALL_DATA_STRUCTURES} compiler/parser/grammar/grammar_populator/constructor.c compiler/parser/grammar/grammar_populator/constructor.h main.c)
+#add_executable(stage1exe ${ALL_PARSER} ${UTILITY}
+#        ${ALL_DATA_STRUCTURES} compiler/parser/grammar/grammar_populator/constructor.c compiler/parser/grammar/grammar_populator/constructor.h main.c)
 
 
 add_executable(main2.c ${ALL_DATA_STRUCTURES} ${UTILITY} ${ALL_LEXER} ${ALL_PARSER} ${SYMBOL_TABLE}
         ./main2.c compiler/parser/core/ast/ast.c compiler/parser/core/ast/ast.h
+        compiler/parser/core/ast/nodes/get_val.c compiler/parser/core/ast/nodes/statements.c
+        compiler/parser/core/ast/nodes/program.c compiler/parser/grammar/first_follow/action_utility.c
+        compiler/parser/grammar/first_follow/action_utility.h compiler/parser/core/ast/nodes/get_val.h
+        compiler/parser/core/ast/nodes/integer_literal.c compiler/parser/core/ast/nodes/integer_literal.h
+        compiler/parser/core/ast/nodes/real_literal.c compiler/parser/core/ast/nodes/real_literal.h
+        compiler/parser/core/ast/nodes/boolean_literal.c compiler/parser/core/ast/nodes/boolean_literal.h
+        compiler/parser/core/ast/nodes/module_node.c compiler/parser/core/ast/nodes/module_node.h
+        compiler/parser/core/ast/nodes/modules_list_node.c compiler/parser/core/ast/nodes/modules_list_node.h
+        compiler/parser/core/ast/nodes/variable_list.c compiler/parser/core/ast/nodes/variable_list.h
+        compiler/parser/core/ast/nodes/array_variable.c compiler/parser/core/ast/nodes/array_variable.h
+        compiler/parser/core/ast/nodes/switch.c compiler/parser/core/ast/nodes/switch.h compiler/parser/core/ast/nodes/case.c
+        compiler/parser/core/ast/nodes/case.h compiler/lexer/core/token.c compiler/parser/core/ast/nodes/binary_operator.c
+        compiler/parser/core/ast/nodes/binary_operator.h compiler/parser/core/ast/nodes/array.c
+        compiler/parser/core/ast/nodes/array.h compiler/parser/core/ast/nodes/unary_operator.c
+        compiler/parser/core/ast/nodes/unary_operator.h compiler/parser/core/ast/nodes/declare_variable_statement.c
+        compiler/parser/core/ast/nodes/declare_variable_statement.h compiler/parser/core/ast/nodes/declare_array_statement.c
+        compiler/parser/core/ast/nodes/declare_array_statement.h compiler/parser/core/ast/nodes/while.c
+        compiler/parser/core/ast/nodes/while.h
+        compiler/parser/core/ast/ast_def.h compiler/symbol_table/interface/symbol_table.c
+        compiler/symbol_table/interface/symbol_table.h compiler/symbol_table/constructor/symbol_table_constructor.c
+        compiler/parser/core/ast/nodes/variable_node.c compiler/lexer/constructor/dfa_constructor.h
+        compiler/semantic_analyzer/semantic_analyzer.c compiler/error_reporter/error_report.c
+        compiler/error_reporter/error_report.h compiler/parser/core/ast/node_utility.c
+        compiler/parser/core/ast/node_utility.h
+        compiler/code_generator/code_generator.c compiler/code_generator/code_generator.h compiler/symbol_table/constructor/symbol_table_constructor.h)
+
+
+add_executable(exec1 main.c ${ALL_DATA_STRUCTURES} ${UTILITY} ${ALL_LEXER} ${ALL_PARSER} ${SYMBOL_TABLE}
+        compiler/parser/core/ast/ast.c compiler/parser/core/ast/ast.h
         compiler/parser/core/ast/nodes/get_val.c compiler/parser/core/ast/nodes/statements.c
         compiler/parser/core/ast/nodes/program.c compiler/parser/grammar/first_follow/action_utility.c
         compiler/parser/grammar/first_follow/action_utility.h compiler/parser/core/ast/nodes/get_val.h
