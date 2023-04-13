@@ -2,8 +2,6 @@
 
 Multiple modules with the driver module with single level of nesting 
 
-
-
 **
 <<module compute_expr>>
 takes input[ a: integer, b:integer, c:boolean];

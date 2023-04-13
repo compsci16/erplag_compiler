@@ -566,9 +566,15 @@ static void set_module_use_caller_parameter_type_descriptor_list(ModuleUseStatem
         if ((*p_ast_node)->tag == NODE_ARRAY) {
             IDNode *id_node = ((ArrayNode *) *p_ast_node)->array_id;
             parameter_name = id_node->id_token->lexeme;
-        } else {
+        } else if ((*p_ast_node)->tag == NODE_ID) {
             Token *id = ((IDNode *) *p_ast_node)->id_token;
             parameter_name = id->lexeme;
+        } else if ((*p_ast_node)->tag == NODE_INTEGER_LITERAL) {
+            parameter_types[i] = (TypeDescriptor) {.form = TYPE_INTEGER};
+            continue;
+        } else if ((*p_ast_node)->tag == NODE_BOOLEAN_LITERAL) {
+            parameter_types[i] = (TypeDescriptor) {.form = TYPE_BOOLEAN};
+            continue;
         }
         SymbolTableEntry *parameter_symbol_table_entry = search_in_cactus_stack(parent, parameter_name);
         if (parameter_symbol_table_entry != NULL) {

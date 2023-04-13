@@ -1,0 +1,30 @@
+declare module mod1;
+declare module mod2;
+declare module scanInt;
+<<<driver program>>>
+start
+    declare x: integer;
+    x := 1;
+    declare a: boolean;
+    a := false;
+    declare u: integer;
+    declare v: boolean;
+    [u, v] := use module mod1 with parameters 1;
+    print(u);
+end
+
+
+<<module mod1>>
+takes input [i : integer];
+returns [u:integer, v:boolean];
+start
+    declare x: integer;
+    x := 2;
+    [u] := use module scanInt with parameters x;
+    v := false;
+end
+
+<<module scanInt>> takes input [i: integer]; returns [i :integer];
+start
+    get_value(i);
+end

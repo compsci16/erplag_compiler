@@ -12,7 +12,7 @@ char *ac_retract_path = "files/lexer_files/accept_retract_other.txt";
 char *state_to_error = "files/lexer_files/state_to_error.txt";
 
 int main() {
-    char *src = "/Users/wint/CLionProjects/erplag_compiler/files/testcases/test_code_gen/t36.txt";
+    char *src = "/Users/wint/CLionProjects/erplag_compiler/files/testcases/test_code_gen/t37.txt";
     char *asm_file = "./code.asm";
     const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
     Parser *parser = get_initialized_parser(g);
@@ -30,6 +30,7 @@ int main() {
         construct_symbol_table(program_node_root);
         perform_semantic_analysis(program_node_root, program_node_root->global_symbol_table);
         print_symbol_table(program_node_root->global_symbol_table, 0);
+        print_symbol_table_as_required(program_node_root->global_symbol_table);
         if (!GOT_SEMANTIC_ERROR_GLOBAL) {
             generate_code_from(program_node_root, asm_file);
         } else {

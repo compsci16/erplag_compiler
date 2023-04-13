@@ -10,8 +10,19 @@ FILE *global_out = NULL;
 #define ASSEMBLY3(X, Y, Z) fprintf(global_out, X, Y, Z)
 #define MAX_OFFSET_STRING_LENGTH 4
 #define LABEL_LENGTH_MAX 10
+const char *argument_registers_from_caller[6] = {"r7", "r6", "r2", "r1", "r8", "r9"};
+const char *argument_registers_from_caller_word_versions[6] = {"di", "si", "dx", "cx", "r8w", "r9w"};
+const char *argument_registers_from_caller_byte_versions[6] = {"dil", "sil", "dl", "r1b", "r8b", "r9b"};
+const char *return_registers_to_caller[6] = {"rax", "r10", "r12", "r13", "r14", "r15"};
+const char *return_registers_to_caller_word_versions[6] = {"ax", "r10w", "r12w", "r13w", "r14w", "r15w"};
+const char *return_registers_to_caller_byte_versions[6] = {"al", "r10b", "r12b", "r13b", "r14b", "r15b"};
 
 static void put_how_much_to_subtract_from_rbp_for_array_in_r8(SymbolTable *parent, ArrayNode *array_node);
+
+static void generate_code_to_pop_caller_saved_registers();
+
+static void generate_code_to_push_caller_saved_registers();
+
 
 static char *generate_temporary_label();
 
@@ -41,7 +52,9 @@ static void generate_directives();
 
 static void generate_text_section();
 
-void generate_code_from(ProgramNode *root, char* output_path) {
+static void handle_dynamic_array(ArrayNode *p_node, SymbolTable *p_table, SymbolTableEntry *p_entry);
+
+void generate_code_from(ProgramNode *root, char *output_path) {
     char *path = output_path;
     global_out = fopen(path, "w");
     if (!global_out) {
@@ -63,8 +76,9 @@ static void code_generator_helper(ASTNode *ast_node, SymbolTable *parent) {
             GENERATE_CODE(program_node->modules_list_node, program_node->global_symbol_table);
             break;
         }
-        case NODE_ARRAY_VARIABLE:
+        case NODE_ARRAY_VARIABLE: {
             break;
+        }
         case NODE_BOOLEAN_LITERAL:
             break;
         case NODE_CASE: {
@@ -217,17 +231,58 @@ static void code_generator_helper(ASTNode *ast_node, SymbolTable *parent) {
             snprintf(size_of_locals, MAX_SIZE_STRING_LENGTH, "%d",
                      function_entry_symbol_table->total_data_size +
                      function_scope_symbol_table->total_data_size);
+
             char *module_name = module_node->module_id->id_token->lexeme;
             ASSEMBLY2("%s:\n", module_name);
             ASSEMBLY("\t;allocate space for module\n");
             ASSEMBLY("\tpush rbp\n");
             ASSEMBLY("\tmov rbp, rsp\n");
             ASSEMBLY2("\tsub rsp, %s\n", size_of_locals);
+
+            // Populate arguments with received parameters
+            VariableListNode *module_arguments = module_node->input_parameter_list_node;
+            ArrayList *module_arguments_list = module_arguments->variable_nodes_list;
+
+            for (int i = 0; i < module_arguments_list->size; ++i) {
+                ASTNode **p_variable_node = get_element_at_index_arraylist(module_arguments_list, i);
+                if ((*p_variable_node)->tag == NODE_VARIABLE) {
+                    VariableNode *variable_node = *p_variable_node;
+                    SymbolTableEntry *argument_entry = variable_node->symbol_table_entry;
+                    if (argument_entry->type_descriptor.form == TYPE_INTEGER) {
+                        ASSEMBLY3("\tmov word[rbp - %d], %s\n", argument_entry->offset,
+                                  argument_registers_from_caller_word_versions[i]);
+                    } else if (argument_entry->type_descriptor.form == TYPE_BOOLEAN) {
+                        ASSEMBLY3("\tmov byte[rbp - %d], %s\n", argument_entry->offset,
+                                  argument_registers_from_caller_byte_versions[i]);
+                    }
+                } else {
+                    // NODE array variable in parameter;
+                }
+            }
             GENERATE_CODE(module_node->statements_node, function_scope_symbol_table);
+
+            ASSEMBLY("\t;place return values in desired registers\n");
+            VariableListNode *module_return = module_node->output_parameter_list_node;
+            ArrayList *module_return_list = module_return->variable_nodes_list;
+            for (int i = 0; i < module_return_list->size; ++i) {
+                VariableNode **p_variable_node = get_element_at_index_arraylist(module_return_list, i);
+                VariableNode *variable_node = *p_variable_node;
+                SymbolTableEntry *return_symbol_table_entry = variable_node->symbol_table_entry;
+                if (return_symbol_table_entry->type_descriptor.form == TYPE_INTEGER) {
+                    ASSEMBLY3("\tmov %s, word[rbp - %d]\n", return_registers_to_caller_word_versions[i],
+                              return_symbol_table_entry->offset);
+                } else if (return_symbol_table_entry->type_descriptor.form == TYPE_BOOLEAN) {
+                    ASSEMBLY3("\tmov %s, byte[rbp - %d]\n", return_registers_to_caller_byte_versions[i],
+                              return_symbol_table_entry->offset);
+                }
+            }
+
+
             char *size_of_locals_and_temporaries = malloc_safe(MAX_SIZE_STRING_LENGTH * sizeof(char));
             int sz_local_temp =
                     function_scope_symbol_table->total_data_size + function_entry_symbol_table->total_data_size;
             snprintf(size_of_locals_and_temporaries, MAX_SIZE_STRING_LENGTH, "%d", sz_local_temp);
+
             ASSEMBLY("\t;deallocate space from module\n");
             ASSEMBLY2("\tadd rsp, %s\n", size_of_locals_and_temporaries);
             ASSEMBLY("\tpop rbp\n");
@@ -471,32 +526,9 @@ static void code_generator_helper(ASTNode *ast_node, SymbolTable *parent) {
         }
         case NODE_ARRAY: {
             ArrayNode *array_node = (ArrayNode *) ast_node;
+            SymbolTableEntry *symbol_table_entry =
+                    search_in_cactus_stack(parent, array_node->array_id->id_token->lexeme);
             put_how_much_to_subtract_from_rbp_for_array_in_r8(parent, array_node);
-            //            SymbolTableEntry *symbol_table_entry =
-//                    search_in_cactus_stack(parent, array_node->array_id->id_token->lexeme);
-//            RangeInInt range_in_int = get_range_in_int_from(symbol_table_entry->type_descriptor.array_type.array_range);
-//            GENERATE_CODE(array_node->array_expression, parent);
-//            if (array_node->array_expression->tag == NODE_INTEGER_LITERAL) {
-//                IntegerLiteralNode *literal_index_node = (IntegerLiteralNode *) array_node->array_expression;
-//                ASSEMBLY2("\tmov r8, %s; store i of a[i] in r8\n",
-//                          literal_index_node->num->lexeme);
-//            } else {
-//                int array_index_offset = get_offset_from_node(array_node->array_expression);
-//                ASSEMBLY2("\tmovsx r8, word[rbp - %d]; store i of a[i] in r8\n",
-//                          array_index_offset);
-//            }
-//            if (range_in_int.begin < 0) {
-//                ASSEMBLY2("\tadd r8,%d\n", -range_in_int.begin);
-//            } else {
-//                ASSEMBLY2("\tsub r8,%d\n", range_in_int.begin);
-//            }
-//            ASSEMBLY("\tadd r8, 1\n");
-//            ASSEMBLY("; element offset wrt rbp = base offset + IntegerSize * (index - starting_index + 1)\n");
-//            ASSEMBLY2("\timul r8, %d\n", INTEGER_SIZE);
-//            int array_base = get_array_base_address(array_node->array_id, parent);
-//            ASSEMBLY2("\tadd r8, %d\n", array_base);
-//            ASSEMBLY("\t; now r8 contains the index of the required element\n");
-
             char *temp = generate_temporary_label();
             SymbolTableEntry *symbol_table_entry_for_temp = malloc_safe(sizeof(SymbolTableEntry));
             parent->current_offset += INTEGER_SIZE;
@@ -833,7 +865,6 @@ static void code_generator_helper(ASTNode *ast_node, SymbolTable *parent) {
         case NODE_ASSIGNMENT_STATEMENT: {
             AssignmentStatementNode *assignment_statement_node = (AssignmentStatementNode *) ast_node;
 
-
             GENERATE_CODE(assignment_statement_node->rhs_node, parent);
             int id_offset = get_offset_from_node(assignment_statement_node->lhs_node);
             bool is_lhs_array_node = assignment_statement_node->lhs_node->tag == NODE_ARRAY;
@@ -888,11 +919,176 @@ static void code_generator_helper(ASTNode *ast_node, SymbolTable *parent) {
         }
         case NODE_WHILE_STATEMENT:
             break;
-        case NODE_MODULE_USE_STATEMENT:
+        case NODE_MODULE_USE_STATEMENT: {
+            ASSEMBLY("\t; module use or function call\n");
+            generate_code_to_push_caller_saved_registers();
+            ModuleUseStatementNode *module_use_statement_node = (ModuleUseStatementNode *) ast_node;
+            char *name_of_callee = module_use_statement_node->module_name->id_token->lexeme;
+            SymbolTableEntry *callee_entry = search_in_cactus_stack(parent, name_of_callee);
+
+            size_t num_parameters = callee_entry->type_descriptor.function_type.num_parameters;
+            ArrayList *parameters = module_use_statement_node->parameter_list;
+            // handling only 6 parameters rn
+
+            for (int i = 0; i < num_parameters; ++i) {
+                ASTNode **p_parameter = get_element_at_index_arraylist(parameters, i);
+                ASTNode *parameter = *p_parameter;
+                switch ((parameter)->tag) {
+                    case NODE_ID: {
+                        IDNode *id_node = (IDNode *) parameter;
+                        SymbolTableEntry *entry = search_in_cactus_stack(parent, id_node->id_token->lexeme);
+                        if (entry->type_descriptor.form == TYPE_INTEGER) {
+                            ASSEMBLY3("\tmov %s, word[rbp - %d]\n", argument_registers_from_caller_word_versions[i],
+                                      entry->offset);
+                        } else if(entry->type_descriptor.form == TYPE_BOOLEAN){
+                            ASSEMBLY3("\tmov %s, byte[rbp - %d]\n", argument_registers_from_caller_byte_versions[i],
+                                      entry->offset);
+                        }
+                        break;
+                    }
+                    case NODE_ARRAY:
+                    case NODE_INTEGER_LITERAL: {
+                        IntegerLiteralNode *integer_literal_node = (IntegerLiteralNode *) parameter;
+                        ASSEMBLY3("\tmov %s, %s\n", argument_registers_from_caller_word_versions[i],
+                                  integer_literal_node->num->lexeme);
+                        break;
+                    }
+                    case NODE_BOOLEAN_LITERAL: {
+                        int value = get_boolean_value_from((BooleanLiteralNode *) parameter);
+                        ASSEMBLY3("\tmov %s, %d\n", argument_registers_from_caller_byte_versions[i], value);
+                        break;
+                    }
+                }
+            }
+            ASSEMBLY2("\tcall %s\n", name_of_callee);
+            generate_code_to_pop_caller_saved_registers();
+
+            ASSEMBLY("\t; store received values from callee available in desired locations\n");
+            size_t num_returns = callee_entry->type_descriptor.function_type.num_returns;
+            ArrayList *received_returns = module_use_statement_node->result_id_list;
+            for (int i = 0; i < num_returns; ++i) {
+                ASTNode **p_return = get_element_at_index_arraylist(received_returns, i);
+                IDNode *id_node = (IDNode *) (*p_return);
+                SymbolTableEntry *result_entry = search_in_cactus_stack(parent, id_node->id_token->lexeme);
+                if (result_entry->type_descriptor.form == TYPE_INTEGER) {
+                    ASSEMBLY3("\tmov [rbp - %d], %s\n", result_entry->offset,
+                              return_registers_to_caller_word_versions[i]);
+                } else if (result_entry->type_descriptor.form == TYPE_BOOLEAN) {
+                    ASSEMBLY3("\tmov [rbp - %d], %s\n", result_entry->offset,
+                              return_registers_to_caller_byte_versions[i]);
+                }
+            }
+
+            ASSEMBLY("\t;handle upto 6 parameters first\n");
             break;
+        }
         case FINAL_ENTRY_COUNT_OF_NODE_TYPES:
             break;
     }
+}
+
+static void generate_code_to_push_caller_saved_registers() {
+    ASSEMBLY("\t; push caller saved registers\n");
+    ASSEMBLY("\tpush rbp\n");
+    ASSEMBLY("\tpush r10\n");
+    ASSEMBLY("\tpush r11\n");
+    ASSEMBLY("\tpush rdi\n");
+    ASSEMBLY("\tpush rsi\n");
+    ASSEMBLY("\tpush rdx\n");
+    ASSEMBLY("\tpush rcx\n");
+    ASSEMBLY("\tpush r8\n");
+    ASSEMBLY("\tpush r9\n");
+}
+
+static void generate_code_to_pop_caller_saved_registers() {
+    ASSEMBLY("\t; pop caller saved registers\n");
+    ASSEMBLY("\tpop r9\n");
+    ASSEMBLY("\tpop r8\n");
+    ASSEMBLY("\tpop rcx\n");
+    ASSEMBLY("\tpop rdx\n");
+    ASSEMBLY("\tpop rsi\n");
+    ASSEMBLY("\tpop rdi\n");
+    ASSEMBLY("\tpop r11\n");
+    ASSEMBLY("\tpop r10\n");
+    ASSEMBLY("\tpop rbp\n");
+}
+
+static void
+handle_dynamic_array(ArrayNode *array_node, SymbolTable *symbol_table, SymbolTableEntry *symbol_table_entry) {
+    if (symbol_table_entry->was_assigned) return;
+    symbol_table_entry->was_assigned = true;
+
+    int dynamic_array_base_address_offset = symbol_table_entry->offset;
+
+    // assume dynamic array range limits are now available
+    int size_of_element;
+    switch (array_node->array_type_descriptor.array_type.atomic_type) {
+        case TYPE_INTEGER: {
+            size_of_element = INTEGER_SIZE;
+            break;
+        }
+        case TYPE_REAL: {
+            size_of_element = REAL_SIZE;
+            break;
+        }
+        case TYPE_BOOLEAN: {
+            size_of_element = BOOLEAN_SIZE;
+            break;
+        }
+        default:
+            size_of_element = 0;
+    }
+
+    // load lower into r11
+    Range array_range = symbol_table_entry->type_descriptor.array_type.array_range;
+    if (array_range.begin->token_type == NUM) {
+        ASSEMBLY2("\tmov r11, %s; load lower into r11\n", array_range.begin->lexeme);
+        if (array_range.begin_sign->token_type == MINUS) {
+            ASSEMBLY("\tneg r11\n");
+        }
+    } else {
+        char *lower_variable = array_range.begin->lexeme;
+        SymbolTableEntry *lower_variables_entry = search_in_cactus_stack(symbol_table, lower_variable);
+        if (!lower_variables_entry->was_assigned) {
+            // TODO: report error
+            return;
+        }
+        ASSEMBLY2("\tmov r11, [rbp - %d]; load lower into r11\n", lower_variables_entry->offset);
+    }
+
+    // load higher into r12
+    if (array_range.end->token_type == NUM) {
+        ASSEMBLY2("\tmov r12, %s; load higher into r12\n", array_range.end->lexeme);
+        if (array_range.end_sign->token_type == MINUS) {
+            ASSEMBLY("\tneg r12\n");
+        }
+    } else {
+        char *higher_variable = array_range.end->lexeme;
+        SymbolTableEntry *higher_variables_entry = search_in_cactus_stack(symbol_table, higher_variable);
+        if (!higher_variables_entry->was_assigned) {
+            // TODO: report error
+            return;
+        }
+        ASSEMBLY2("\tmov r12, [rbp - %d];  // load higher into r12\n", higher_variables_entry->offset);
+    }
+
+
+    // load size of dynamic array in r12
+    ASSEMBLY("\tsub r12, r11; load size of dynamic array in r12\n");
+    ASSEMBLY("\tadd r12, 1\n");
+
+    // allocate space for dynamic array:
+    // pass the number of *BYTES* you want as the only parameter, in rdi
+    ASSEMBLY("\t; calculate number of bytes needed\n");
+    ASSEMBLY2("\timul r12, %d\n", size_of_element);
+
+    generate_align_stack_code();
+    ASSEMBLY("\tmov rdi, r12\n ; load size as first parameter of malloc in rdi ");
+    ASSEMBLY("\tcall _malloc\n");
+    ASSEMBLY("\t; now rax contains the pointer to the array on heap, load that as address of dynamic array in it's"
+             " location\n");
+    ASSEMBLY2("\tmov byte[rbp - %d], rax\n", dynamic_array_base_address_offset);
+    generate_restore_stack_pointer_code();
 }
 
 static char *create_boolean_temporary_and_insert_it_in(SymbolTable *symbol_table) {
@@ -1058,8 +1254,9 @@ static int get_offset_from_node(ASTNode *ast_node) {
         }
         case NODE_DECLARE_VARIABLE_STATEMENT:
             break;
-        case NODE_DECLARE_ARRAY_VARIABLE_STATEMENT:
+        case NODE_DECLARE_ARRAY_VARIABLE_STATEMENT: {
             break;
+        }
         case NODE_ASSIGNMENT_STATEMENT:
             break;
         case NODE_WHILE_STATEMENT:
@@ -1095,6 +1292,7 @@ static void generate_directives() {
     ASSEMBLY("extern _puts\n");
     ASSEMBLY("extern _scanf\n");
     ASSEMBLY("extern _printf\n");
+    ASSEMBLY("extern _malloc\n");
 }
 
 static void generate_text_section() {
