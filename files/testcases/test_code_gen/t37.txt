@@ -11,6 +11,7 @@ start
     declare v: boolean;
     [u, v] := use module mod1 with parameters 1;
     print(u);
+    print(v);
 end
 
 

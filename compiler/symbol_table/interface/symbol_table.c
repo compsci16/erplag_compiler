@@ -268,8 +268,8 @@ void print_symbol_table(SymbolTable *symbol_table, int depth) {
     for (int i = 0; i < depth; ++i) {
         printf("-");
     }
-    printf("Symbol Table , total data size = %d, current offset = %d, size = %d"
-           "\n", symbol_table->total_data_size, symbol_table->current_offset,
+    printf("Symbol Table , total data size = %d, current offset = %d, size = %d\n",
+           symbol_table->total_data_size, symbol_table->current_offset,
            symbol_table->size);
     for (int i = 0; i < depth; ++i) {
         printf(" ");

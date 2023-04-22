@@ -12,7 +12,7 @@ char *ac_retract_path = "files/lexer_files/accept_retract_other.txt";
 char *state_to_error = "files/lexer_files/state_to_error.txt";
 
 int main() {
-    char *src = "/Users/wint/CLionProjects/erplag_compiler/files/testcases/test_code_gen/t37.txt";
+    char *src = "/Users/wint/CLionProjects/erplag_compiler/files/testcases/test_code_gen/t38.txt";
     char *asm_file = "./code.asm";
     const Grammar *g = get_initialized_grammar("/Users/wint/code/compiler/files/grammar_files/productions.txt");
     Parser *parser = get_initialized_parser(g);
